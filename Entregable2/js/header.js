@@ -1,48 +1,56 @@
-class Header extends HTMLElement{
-    connectedCallback(){
-        this.innerHTML =`
-        <header>
+export function setupHeader() {
+    const parent = window.parent.document;
+    const menuButton = document.querySelector(".menu-toggle");
+    const profileButton = document.querySelector(".profile");
+    const menuPanel = parent.createElement("aside");
+    const profilePanel = parent.createElement("aside");
 
-            <!-- Boton hamburghuesa -->
-            <button class="hamburger-menu"
-            aria-label="Abrir menú de navegación"
-            aria-expanded="false"
-            aria-controls="main-nav">
-            &#9776;
-            </button>
+    menuPanel.className = "menu-panel";
+    menuPanel.innerHTML = `<nav aria-label="Menú principal">
+        <a href="index.html"><span class="category-icon">⌂</span>Inicio</a>
+        <a href="#"><span class="category-icon">✦</span>Nuevos</a>
+        <a href="#"><span class="category-icon">♛</span>Populares</a>
+        <a href="#"><span class="category-icon">★</span>Favoritos</a>
+        <a href="#"><span class="category-icon">◆</span>Todas las categorías</a>
+        <div class="menu-divider"></div>
+        <a href="#"><span class="category-icon">●</span>Acción</a>
+        <a href="#"><span class="category-icon">▣</span>Arcade</a>
+        <a href="#"><span class="category-icon">◉</span>Aventuras</a>
+        <a href="#"><span class="category-icon">♠</span>Solitario</a>
+        <a href="#"><span class="category-icon">▤</span>Cocina</a>
+        <a href="#"><span class="category-icon">⚯</span>Deportes</a>
+        <a href="#"><span class="category-icon">◉</span>Conducir</a>
+        <a href="#"><span class="category-icon">♟</span>Estrategia</a>
+        <a href="#"><span class="category-icon">☷</span>Gestión</a>
+        <a href="#"><span class="category-icon">⌕</span>Objetos ocultos</a>
+        <a href="#"><span class="category-icon">✚</span>Rompecabezas</a>
+    </nav>`;
+    profilePanel.className = "profile-panel";
+    profilePanel.innerHTML = `<h2>Mi perfil</h2><nav aria-label="Menú de perfil">
+        <a href="#">Perfil</a><a href="#">Favoritos</a><a href="#">Wishlist</a>
+        <a href="#">Configuración</a><a href="#">Cerrar sesión</a>
+    </nav>`;
+    parent.body.append(menuPanel, profilePanel);
 
-            <!-- Menu nav -->
-            <nav id="main-nav">
-                <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="nuevos.html">Nuevos</a></li>
-                <li><a href="populares.html">Populares</a></li>
-                <li><a href="favoritos.html">Favoritos</a></li>
-                <li><a href="todaslascat.html">Todas las categorias</a></li>
-                <li><a href="accion.html">Accion</a></li>
-                <li><a href="arcade.html">Arcade</a></li>
-                <li><a href="aventuras.html">Aventuras</a></li>
-                <li><a href="cocina.html">Cocina</a></li>
-                <li><a href="conducir.html">Conducir</a></li>
-                <li><a href="deportes.html">Deportes</a></li>
-                <li><a href="estrategia.html">Estrategia</a></li>
-                <li><a href="gestion.html">Gestion</a></li>
-                <li><a href="objetoscoultos.html">Objetos ocultos</a></li>
-                <li><a href="rompecabezas.html">Rompecabezas</a></li>
-                <li><a href="jugadores2.html">2 Jugadores</a></li>
-                <li><a href="multijugador.html">Multijugador</a></li>
-                </ul>
-            </nav>
-
-            <!-- Logo imagen -->
-            <img src="logo imagen">
-
-            <!-- Barra de busqueda -->
-
-            <!-- Perfil, foto -> link a perfil.html -->
-
-        </header>
-        `;
-    }
+    const closeMenu = () => {
+        menuPanel.classList.remove("is-open");
+        menuButton.classList.remove("is-open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Abrir menú");
+    };
+    menuButton.addEventListener("click", () => {
+        const isOpen = menuPanel.classList.toggle("is-open");
+        menuButton.classList.toggle("is-open", isOpen);
+        menuButton.setAttribute("aria-expanded", String(isOpen));
+        menuButton.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
+        profilePanel.classList.remove("is-open");
+    });
+    profileButton.addEventListener("click", () => {
+        profilePanel.classList.toggle("is-open");
+        menuPanel.classList.remove("is-open");
+        closeMenu();
+    });
+    menuPanel.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
 }
-customElements.define("my-header", Header);
+
+setupHeader();

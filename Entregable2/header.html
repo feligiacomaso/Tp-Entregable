@@ -1,39 +1,32 @@
-<header>
-        <!--Logo imagen-->
-        <img src="logo imagen">
-
-        <!--Barra de busqueda-->
-
-        <!--Perfil, foto -> link a perfil.html-->
-
-        <!--Boton hamburghuesa-->
-        <button class="hamburger-menu"
-        aria-label="Abrir menú de navegación"
-        aria-expanded="false"
-        aria-controls="main-nav">
-        &#9776;
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/header.css">
+</head>
+<body class="header-page">
+    <header class="site-header">
+        <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
         </button>
-
-        <!--Menu nav-->
-        <nav id="main-anv" class="nav-open">
-            <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="nuevos.html">Nuevos</a></li>
-            <li><a href="populares.html">Populares</a></li>
-            <li><a href="favoritos.html">Favoritos</a></li>
-            <li><a href="todaslascat.html">Todas las categorias</a></li>
-            <li><a href="accion.html">Accion</a></li>
-            <li><a href="arcade.html">Arcade</a></li>
-            <li><a href="aventuras.html">Aventuras</a></li>
-            <li><a href="cocina.html">Cocina</a></li>
-            <li><a href="conducir.html">Conducir</a></li>
-            <li><a href="deportes.html">Deportes</a></li>
-            <li><a href="estrategia.html">Estrategia</a></li>
-            <li><a href="gestion.html">Gestion</a></li>
-            <li><a href="objetoscoultos.html">Objetos ocultos</a></li>
-            <li><a href="rompecabezas.html">Rompecabezas</a></li>
-            <li><a href="jugadores2.html">2 Jugadores</a></li>
-            <li><a href="multijugador.html">Multijugador</a></li>
-            </ul>
-        </nav>
+        <a class="brand" href="index.html" aria-label="Game House, inicio">
+            <img src="img/Logo.svg" alt="Game House" class="logo">
+        </a>
+        <label class="barra-busqueda">
+            <input type="search" placeholder="¿Qué querés jugar?" aria-label="Buscar juegos">
+            <button type="button" aria-label="Buscar">
+                <img src="img/icon_buscar.svg" alt="">
+            </button>
+        </label>
+        <button class="profile" aria-label="Perfil">
+            <img src="img/icon_profile.svg" alt="">
+        </button>
     </header>
+ 
+    <script type="module" src="js/header.js"></script>
+</body>
+</html>

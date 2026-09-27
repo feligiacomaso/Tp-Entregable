@@ -1,0 +1,214 @@
+.card {
+    --art: #276b8d;
+    position: relative;
+    flex: 0 0 calc((100% - 8px)/2);
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid #3a3d44;
+    border-radius: 5px;
+    background: #23262d;
+    scroll-snap-align: start;
+    transition: border-color .2s,transform .2s,box-shadow .2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+.card.is-paid:hover,.card.is-paid:focus-within {
+    border-color: #f7c544;
+    box-shadow: 0 0 0 1px #f7c54488;
+}
+
+.card.is-free:hover,.card.is-free:focus-within {
+    border-color: #8a38f5;
+    box-shadow: 0 0 0 1px #8a38f588;
+}
+
+.art {
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1.52;
+    overflow: hidden;
+    background: radial-gradient(ellipse at 70% 20%,#ffffff72,transparent 25%),linear-gradient(145deg,color-mix(in srgb,var(--art),white 22%),var(--art) 58%,#141821);
+    isolation: isolate;
+}
+
+.art:before,.art:after {
+    position: absolute;
+    z-index: -1;
+    width: 75%;
+    aspect-ratio: 1;
+    border: 2px solid #ffffff55;
+    border-radius: 30%;
+    box-shadow: 0 0 24px #ffffff24;
+    content: "";
+    transform: rotate(35deg);
+}
+
+.art:after {
+    width: 45%;
+    border-color: #ffd44d88;
+    transform: rotate(65deg);
+}
+
+.art-image {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .35s;
+}
+
+.card:hover .art-image {
+    transform: scale(1.06);
+}
+
+.art-name {
+    position: absolute;
+    z-index: 1;
+    bottom: 5px;
+    left: 6px;
+    max-width: 85%;
+    font-size: clamp(9px,2.5vw,15px);
+    font-weight: 1000;
+    line-height: .95;
+    text-transform: uppercase;
+    text-shadow: 1px 2px 3px #000;
+}
+
+.card-info {
+    padding: 5px 4px 7px;
+}
+
+.card-info h3 {
+    overflow: hidden;
+    margin: 0;
+    font-size: 11px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card-rating {
+    display: block;
+    margin-top: 2px;
+    color: #ffd22c;
+    font-size: 10px;
+}
+
+.action-icon {
+    display: block;
+    flex: none;
+    width: 19px;
+    height: 19px;
+    object-fit: contain;
+}
+
+.game-action {
+    position: absolute;
+    z-index: 3;
+    top: 4px;
+    right: 4px;
+    display: block;
+    width: 32px;
+    height: 29px;
+    overflow: hidden;
+    padding: 0;
+    transform: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: width .28s ease,box-shadow .2s;
+}
+
+.game-action.is-paid {
+    border-color: #e1b90b;
+    background: #f7c544;
+    color: #17191d;
+}
+
+.game-action.is-free {
+    border-color: #a15cff;
+    background: #8a38f5;
+    color:  #17191d;
+}
+
+.game-action .action-icon {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    width: 19px;
+    height: 19px;
+    transform: translateY(-50%);
+}
+
+.game-action .icon-play,.hero-action .icon-play {
+    filter: brightness(0) invert(1);
+}
+
+.game-action .icon-shop,.hero-action .icon-shop {
+    filter: brightness(0) saturate(100%);
+}
+
+.game-action b {
+    position: absolute;
+    top: 50%;
+    right: 29px;
+    transform: translateY(-50%);
+    font-size: 10px;
+    opacity: 0;
+    transition: opacity .15s ease;
+    white-space: nowrap;
+}
+
+.game-action:hover,.game-action:focus-visible {
+    width: 82px;
+    box-shadow: 0 0 12px #ffd22c88;
+}
+
+.game-action.is-free:hover,.game-action.is-free:focus-visible {
+    box-shadow: 0 0 14px #8a38f588;
+}
+
+.game-action:hover b,.game-action:focus-visible b {
+    opacity: 1;
+}
+
+@media(min-width:381px) {
+    .card {
+        flex-basis: calc((100% - 16px)/3);
+    }
+
+}
+
+@media(min-width:601px) {
+    .card {
+        flex-basis: calc((100% - 30px)/4);
+    }
+
+}
+
+@media(min-width:901px) {
+    .card {
+        flex-basis: calc((100% - 60px)/7);
+    }
+}
+@media(hover:none) {
+    .card:hover .art-image {
+        transform: none;
+    }
+
+    .game-action {
+        width: 82px;
+    }
+
+    .game-action b {
+        opacity: 1;
+    }
+
+}
+

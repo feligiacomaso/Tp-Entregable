@@ -1,0 +1,92 @@
+.game-section {
+    margin-bottom: 24px;
+}
+
+.game-section .section-title {
+    padding-bottom: 6px;
+    border-bottom: 1px solid #41444b;
+}
+
+.game-section .section-title h2 {
+    font-size: 15px;
+}
+
+.game-section .carousel {
+    position: relative;
+    overflow: hidden;
+    padding: 0 25px;
+}
+
+.track {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 2px 2px 7px;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+}
+
+.track::-webkit-scrollbar {
+    display: none;
+}
+
+.game-section .row-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 4;
+    width: 24px;
+    height: 48px;
+    padding: 0;
+    transform: translateY(-50%);
+    border: 0;
+    border-radius: 4px;
+    background: #1b1d21cc;
+    color: #fff;
+    font: 300 36px/1 system-ui,sans-serif;
+}
+
+.game-section .row-arrow:hover {
+    transform: translateY(-50%) scale(1.12);
+    background: #252830;
+    color: #f7c544;
+}
+
+.game-section .row-prev {
+    left: 0;
+}
+
+.game-section .row-next {
+    right: 0;
+}
+
+.carousel-pagination{display:flex;justify-content:center;gap:7px;margin-top:7px}
+.pagination-dot{width:9px;height:9px;padding:0;border:1px solid #777d89;border-radius:99px;background:#343943;cursor:pointer;transition:width .22s ease,background .22s ease,border-color .22s ease}
+.pagination-dot:hover{border-color:#f7c544;transform:scale(1.12)}
+.pagination-dot.is-active{width:25px;border-color:#f7c544;background:#f7c544}
+
+@media(min-width:601px) {
+    .game-section {
+        margin-bottom: 28px;
+    }
+
+    .game-section .section-title {
+        padding-bottom: 7px;
+    }
+
+    .game-section .section-title h2 {
+        font-size: 17px;
+    }
+
+    .game-section .carousel {
+        padding-inline: 32px;
+    }
+
+    .game-section .row-arrow {
+        width: 30px;
+        height: 58px;
+        font-size: 42px;
+    }
+
+}
+
