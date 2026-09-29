@@ -47,13 +47,16 @@ export function setupPegSolitaire(root, player, launchButton) {
         cells.forEach((line, row) => line.forEach((cell, column) => {
             if (!cell) return;
             const hasPeg = pegs[row][column];
+            const isSelected = selected?.row === row && selected?.column === column;
             cell.classList.toggle("is-occupied", hasPeg);
-            cell.classList.toggle("is-selected", selected?.row === row && selected?.column === column);
+            cell.classList.toggle("is-selected", isSelected);
             cell.classList.toggle("is-valid-target", targets.has(`${row}-${column}`));
             cell.disabled = !started || ended;
             cell.setAttribute("aria-pressed", String(selected?.row === row && selected?.column === column));
             cell.setAttribute("aria-label", hasPeg ? `Ficha en fila ${row + 1}, columna ${column + 1}` : `Espacio vacío en fila ${row + 1}, columna ${column + 1}`);
-            cell.innerHTML = hasPeg ? '<img class="peg-minion" src="img/peg-token.svg?v=2" alt="Ficha minion" draggable="false">' : "";
+            cell.innerHTML = hasPeg
+                ? `<img class="peg-minion" src="src/minion-${isSelected ? "amarillo" : "violeta"}.svg" alt="" draggable="false">`
+                : "";
         }));
 
         moveCount.textContent = moves;
