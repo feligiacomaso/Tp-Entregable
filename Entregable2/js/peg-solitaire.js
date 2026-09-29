@@ -15,6 +15,7 @@ export function setupPegSolitaire(root, player, launchButton) {
     const resultTitle = root.querySelector("#peg-result-title");
     const resultMessage = root.querySelector("#peg-result-message");
     const replayButton = root.querySelector("#peg-replay");
+    const restartButton = root.querySelector("#peg-restart");
     let pegs;
     let cells;
     let selected = null;
@@ -25,6 +26,13 @@ export function setupPegSolitaire(root, player, launchButton) {
     let timer;
 
     const formatTime = value => `${String(Math.floor(value / 60)).padStart(2, "0")}:${String(value % 60).padStart(2, "0")}`;
+    const startTimer = () => {
+        clearInterval(timer);
+        timer = setInterval(() => {
+            seconds++;
+            timeLabel.textContent = formatTime(seconds);
+        }, 1000);
+    };
     const countPegs = () => pegs.flat().filter(Boolean).length;
     const isLegal = (row, column, dr, dc) => {
         const toRow = row + dr;
@@ -74,6 +82,7 @@ export function setupPegSolitaire(root, player, launchButton) {
         } else if (!hasMoves()) {
             ended = true;
             clearInterval(timer);
+            restartButton.hidden = true;
             resultTitle.textContent = "Fin de la partida";
             resultMessage.textContent = `No quedan movimientos. Te quedaron ${remaining} fichas.`;
         }
@@ -151,20 +160,18 @@ export function setupPegSolitaire(root, player, launchButton) {
     launchButton.addEventListener("click", () => {
         started = true;
         player.classList.add("is-playing");
+        restartButton.hidden = false;
         status.textContent = "Seleccioná una ficha y saltá sobre otra hacia un espacio vacío.";
-        timer = setInterval(() => {
-            seconds++;
-            timeLabel.textContent = formatTime(seconds);
-        }, 1000);
+        startTimer();
         render();
     }, { once: true });
-    replayButton.addEventListener("click", () => {
+    const restartGame = () => {
         clearInterval(timer);
         reset();
-        timer = setInterval(() => {
-            seconds++;
-            timeLabel.textContent = formatTime(seconds);
-        }, 1000);
-    });
+        restartButton.hidden = false;
+        startTimer();
+    };
+    restartButton.addEventListener("click", restartGame);
+    replayButton.addEventListener("click", restartGame);
     reset();
 }

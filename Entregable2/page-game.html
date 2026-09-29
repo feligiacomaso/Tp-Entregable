@@ -30,9 +30,18 @@
                             <div><span>Fichas restantes</span><strong id="peg-left">32</strong></div>
                             <div><span>Tiempo</span><strong id="peg-time">00:00</strong></div>
                         </div>
-                        <div class="peg-board" id="peg-board" role="grid" aria-label="Tablero de solitario de clavijas"></div>
+                        <div class="peg-play-area">
+                            <aside class="peg-guide" aria-label="Ayuda del minion">
+                                <div class="peg-speech">
+                                    <img class="peg-speech-image" src="img/nube.png" alt="">
+                                    <p id="peg-status" aria-live="polite">Seleccioná una ficha y saltá sobre otra hacia un espacio vacío.</p>
+                                </div>
+                                <img class="peg-guide-minion" src="img/minion.png" alt="Minion que te ayuda durante la partida">
+                            </aside>
+                            <div class="peg-board" id="peg-board" role="grid" aria-label="Tablero de solitario de clavijas"></div>
+                        </div>
                         <div class="peg-game-controls">
-                            <p id="peg-status" aria-live="polite">Seleccioná una ficha y saltá sobre otra hacia un espacio vacío.</p>
+                            <button id="peg-restart" type="button" hidden>Reiniciar</button>
                         </div>
                         <div class="peg-result" id="peg-result" hidden aria-live="assertive">
                             <div>

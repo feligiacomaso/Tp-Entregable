@@ -8,7 +8,7 @@
     z-index: 0;
     inset: 0;
     display: none;
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto minmax(0, 1fr) auto;
     justify-items: center;
     gap: 6px;
     padding: 14px clamp(12px, 3vw, 38px) 10px;
@@ -44,12 +44,87 @@
     font-size: clamp(15px, 2vw, 20px);
 }
 
+.peg-play-area {
+    display: grid;
+    grid-template-columns: minmax(160px, .62fr) minmax(0, 1fr);
+    align-items: center;
+    justify-self: center;
+    gap: clamp(8px, 2vw, 28px);
+    width: min(100%, 1040px);
+    min-height: 0;
+}
+
+.peg-guide {
+    position: relative;
+    align-self: stretch;
+    min-width: 0;
+    min-height: 0;
+}
+
+.peg-guide-minion {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 66%;
+    height: 42%;
+    object-fit: contain;
+    object-position: center bottom;
+}
+
+.peg-speech {
+    position: absolute;
+    z-index: 1;
+    bottom: 30%;
+    left: 30%;
+    width: 60%;
+    aspect-ratio: 1;
+    background: #101b30;
+    -webkit-mask: url("../img/nube.png") center / 100% 100% no-repeat;
+    mask: url("../img/nube.png") center / 100% 100% no-repeat;
+}
+
+.peg-speech::before {
+    position: absolute;
+    inset: 0;
+    background: #101b30;
+    content: "";
+}
+
+.peg-speech-image {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+}
+
+.peg-speech p {
+    position: absolute;
+    z-index: 1;
+    top: 29%;
+    left: 15%;
+    display: grid;
+    width: 72%;
+    height: 39%;
+    margin: 0;
+    place-items: center;
+    overflow-wrap: anywhere;
+    color: #fff;
+    font-size: clamp(10px, 1vw, 14px);
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+}
+
 .peg-board {
+    align-self: center;
     display: grid;
     grid-template-columns: repeat(7, minmax(0, 1fr));
     grid-template-rows: repeat(7, minmax(0, 1fr));
     gap: 2px;
-    width: min(61vh, 48vw, 600px);
+    width: min(61vh, 42vw, 600px);
     aspect-ratio: 1;
     padding: 6%;
     border: 2px solid #526b94;
@@ -59,6 +134,35 @@
     clip-path: polygon(15% 0, 85% 0, 100% 50%, 85% 100%, 15% 100%, 0 50%);
     filter: drop-shadow(0 14px 16px #000b);
     transform: perspective(1000px) rotateX(7deg);
+}
+
+.peg-game-controls {
+    z-index: 1;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.peg-game-controls button {
+    min-width: 104px;
+    padding: 8px 16px;
+    border: 0;
+    border-radius: 22px;
+    background: #f7c544;
+    color: #17191d;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background .2s, transform .2s;
+}
+
+.peg-game-controls button:hover {
+    transform: translateY(-1px);
+    background: #ffe17e;
+}
+
+.peg-game-controls button[hidden] {
+    display: none;
 }
 
 .peg-cell {
@@ -123,20 +227,6 @@
     outline-offset: -2px;
 }
 
-.peg-game-controls {
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-}
-
-.peg-game-controls p {
-    margin: 0;
-    color: #e5eaff;
-    font-size: 12px;
-}
-
 .peg-result:not([hidden]) {
     position: absolute;
     z-index: 5;
@@ -191,8 +281,26 @@
         padding: 12px 10px 8px;
     }
 
+    .peg-play-area {
+        grid-template-columns: minmax(78px, .62fr) minmax(0, 1.38fr);
+        gap: 4px;
+    }
+
+    .peg-speech {
+        left: 0;
+        width: 180%;
+    }
+
+    .peg-speech p {
+        top: 29%;
+        left: 16%;
+        width: 70%;
+        height: 38%;
+        font-size: clamp(9px, 2.5vw, 12px);
+    }
+
     .peg-board {
-        width: min(80vw, 340px);
+        width: min(68vw, 320px);
     }
 
     .peg-game-stats {
@@ -203,8 +311,4 @@
         font-size: 9px;
     }
 
-    .peg-game-controls p {
-        max-width: 68%;
-        font-size: 10px;
-    }
 }
