@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/header-panels.css">
         <link rel="stylesheet" href="css/page-game.css">
+        <link rel="stylesheet" href="css/peg-solitaire.css">
         <link rel="stylesheet" href="css/footer.css">
         <script type="module" src="js/page-game.js"></script>
     </head>
@@ -23,6 +24,24 @@
             <section class="player-panel" aria-label="Juego">
                 <div class="game-player" id="game-player">
                     <img class="player-image" id="player-image" alt="">
+                    <section class="peg-game" id="peg-solitaire" aria-label="Solitario de clavijas">
+                        <div class="peg-game-stats">
+                            <div><span>Movimientos</span><strong id="peg-moves">0</strong></div>
+                            <div><span>Fichas restantes</span><strong id="peg-left">32</strong></div>
+                            <div><span>Tiempo</span><strong id="peg-time">00:00</strong></div>
+                        </div>
+                        <div class="peg-board" id="peg-board" role="grid" aria-label="Tablero de solitario de clavijas"></div>
+                        <div class="peg-game-controls">
+                            <p id="peg-status" aria-live="polite">Seleccioná una ficha y saltá sobre otra hacia un espacio vacío.</p>
+                        </div>
+                        <div class="peg-result" id="peg-result" hidden aria-live="assertive">
+                            <div>
+                                <h2 id="peg-result-title"></h2>
+                                <p id="peg-result-message"></p>
+                                <button id="peg-replay" type="button">Volver a jugar</button>
+                            </div>
+                        </div>
+                    </section>
                     <button class="launch-game" id="launch-game" type="button">Jugar</button>
                     <div class="player-message" id="player-message" hidden></div>
                 </div>
@@ -40,6 +59,10 @@
                     <section class="about-section" id="about-game">
                         <h1>Acerca del juego</h1>
                         <p id="game-description">Cargando información...</p>
+                        <section class="peg-rules" id="peg-rules" hidden>
+                            <h2>Cómo jugar</h2>
+                            <p>El tablero comienza lleno, excepto por el agujero del centro. Mové una ficha en horizontal o vertical saltando sobre una ficha adyacente hacia un espacio vacío. La ficha saltada se elimina. Ganás si conseguís dejar una sola ficha; el objetivo ideal es que quede en el centro.</p>
+                        </section>
                         <img class="about-image" id="about-image" alt="">
                     </section>
                     <button class="favorite-cta" type="button" aria-pressed="false">Favoritos <span>★</span></button>
