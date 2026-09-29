@@ -15,7 +15,7 @@
     align-items: center;
     justify-content: space-between;
     height: 66px;
-    padding: 0 12px;
+    padding: 0 2% 0 1%;
     border-bottom: 2px solid #f3ca28;
     background: #1b1d21;
 }
@@ -179,7 +179,7 @@
 
 @media(min-width:700px) {
     .site-header {
-        padding: 0 4.5%;
+        padding: 0 2% 0 1%;
     }
 
     .brand {
