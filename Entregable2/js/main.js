@@ -12,10 +12,19 @@ function showMessage(message) {
     });
 }
 
+const pegSolitaire = {
+    id: "minion-peg-solitaire",
+    name: "Minion Peg Solitaire",
+    category: "Solitario",
+    background_image: "img/peg_solitaire.png",
+    is_free: true,
+    rating: 5
+};
+
 showMessage("Cargando juegos...");
 loadFooter();
 loadGames().then(({ byRating, byDate }) => {
-    setupBannerCarousel(byRating);
+    setupBannerCarousel([pegSolitaire, ...byRating]);
     setupGameCarousels({
         popular: byRating.slice(0, 30),
         recent: byDate.slice(0, 30),

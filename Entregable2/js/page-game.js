@@ -21,29 +21,44 @@ function toggleFavorite(game) {
     });
 }
 
-function addComment(text, list) {
+const createId = () => `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+
+function addReply(reply, list) {
+    const item = document.createElement("div");
+    item.className = "comment-reply";
+    item.innerHTML = '<span class="comment-avatar reply-avatar" aria-hidden="true"><img src="img/icon_profile.svg" alt=""></span><div><small>Vos</small><time>ahora</time><p></p></div>';
+    item.querySelector("p").textContent = reply.text;
+    list.append(item);
+}
+
+function addComment(comment, list) {
     const item = document.createElement("article");
     item.className = "comment-item";
-    item.innerHTML = '<span class="comment-avatar user" aria-hidden="true"><img src="img/icon_profile.svg" alt=""></span><div class="comment-body"><small>Vos</small><time>ahora</time><p></p><div class="comment-actions"><button type="button" data-vote="like" aria-label="Me gusta" aria-pressed="false"><img class="vote-icon" src="img/icon_like.svg" alt=""><span>0</span></button><button type="button" data-vote="dislike" aria-label="No me gusta" aria-pressed="false"><img class="vote-icon dislike" src="img/icon_like.svg" alt=""><span>0</span></button><button type="button" data-reply aria-expanded="false">Responder</button></div></div>';
-    item.querySelector("p").textContent = text;
+    item.dataset.commentId = comment.id;
+    item.innerHTML = '<span class="comment-avatar user" aria-hidden="true"><img src="img/icon_profile.svg" alt=""></span><div class="comment-body"><small>Vos</small><time>ahora</time><p></p><div class="comment-actions"><button type="button" data-vote="like" aria-label="Me gusta" aria-pressed="false"><img class="vote-icon" src="img/icon_like.svg" alt=""><span>0</span></button><button type="button" data-vote="dislike" aria-label="No me gusta" aria-pressed="false"><img class="vote-icon dislike" src="img/icon_like.svg" alt=""><span>0</span></button><button type="button" data-reply aria-expanded="false">Responder</button></div><div class="reply-list"></div></div>';
+    item.querySelector(".comment-body > p").textContent = comment.text;
+    comment.replies.forEach(reply => addReply(reply, item.querySelector(".reply-list")));
     list.prepend(item);
 }
 
 function setupComments(game) {
     const list = $("#comment-list");
     const key = `game-house-comments-${game.id ?? game.name}`;
-    const comments = JSON.parse(localStorage.getItem(key) || "[]");
+    const comments = JSON.parse(localStorage.getItem(key) || "[]").map(comment => typeof comment === "string"
+        ? { id: createId(), text: comment, replies: [] }
+        : { ...comment, id: comment.id || createId(), replies: comment.replies || [] });
     if (!comments.length) list.innerHTML = '<p class="empty-comments">Todavía no hay comentarios. ¡Dejá el primero!</p>';
-    comments.forEach(text => addComment(text, list));
+    comments.forEach(comment => addComment(comment, list));
     $(".comment-form").addEventListener("submit", event => {
         event.preventDefault();
         const input = event.currentTarget.elements.comment;
         const text = input.value.trim();
         if (!text) return;
         list.querySelector(".empty-comments")?.remove();
-        addComment(text, list);
-        localStorage.setItem(key, JSON.stringify([text, ...comments]));
-        comments.unshift(text);
+        const comment = { id: createId(), text, replies: [] };
+        addComment(comment, list);
+        comments.unshift(comment);
+        localStorage.setItem(key, JSON.stringify(comments));
         input.value = "";
     });
     list.addEventListener("click", event => {
@@ -76,11 +91,26 @@ function setupComments(game) {
             }
             const form = document.createElement("form");
             form.className = "reply-form";
-            form.innerHTML = '<input placeholder="Escribe una respuesta" aria-label="Escribe una respuesta" required><button type="submit">Responder</button>';
-            form.addEventListener("submit", e => { e.preventDefault(); form.remove(); button.setAttribute("aria-expanded", "false"); });
+            form.innerHTML = '<input name="reply" placeholder="Escribe una respuesta" aria-label="Escribe una respuesta" required><button type="submit">Responder</button>';
             body.append(form);
             button.setAttribute("aria-expanded", "true");
         }
+    });
+    list.addEventListener("submit", event => {
+        const form = event.target.closest(".reply-form");
+        if (!form) return;
+        event.preventDefault();
+        const text = form.elements.reply.value.trim();
+        if (!text) return;
+        const item = form.closest(".comment-item");
+        const comment = comments.find(entry => entry.id === item.dataset.commentId);
+        if (!comment) return;
+        const reply = { text };
+        comment.replies.push(reply);
+        addReply(reply, item.querySelector(".reply-list"));
+        localStorage.setItem(key, JSON.stringify(comments));
+        form.remove();
+        item.querySelector("[data-reply]").setAttribute("aria-expanded", "false");
     });
 }
 
