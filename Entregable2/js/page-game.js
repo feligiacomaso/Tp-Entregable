@@ -134,7 +134,6 @@ function showGame(game) {
     setImage("#about-image", `${title}: imagen del juego`);
     setImage("#video-image", `${title}: video del juego`);
     $("#game-description").textContent = game.description || "Descubrí este juego y conocé todos sus detalles en Game House.";
-    $("#peg-rules").hidden = game.id !== "minion-peg-solitaire";
     $("#game-developer").textContent = names(game.developers) || game.developer || "Game House";
     $("#game-release").textContent = dateText(game.released);
     $("#game-updated").textContent = dateText(game.updated || game.last_updated);
