@@ -46,6 +46,10 @@
     font: 300 36px/1 system-ui,sans-serif;
 }
 
+.row-arrow::before{display:block;width:13px;height:13px;margin:auto;border-right:2px solid currentColor;border-bottom:2px solid currentColor;content:""}
+.row-prev::before{transform:rotate(135deg)}
+.row-next::before{transform:rotate(-45deg)}
+
 .game-section .row-arrow:hover {
     transform: translateY(-50%) scale(1.12);
     background: #252830;

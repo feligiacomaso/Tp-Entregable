@@ -162,10 +162,13 @@
     border-radius: 0;
     background: transparent;
     color: #fff;
-    font: 200 66px/1 system-ui,sans-serif;
     text-shadow: 0 2px 12px #000b;
     transform: translateY(-50%);
 }
+
+.hero-arrow::before{display:block;width:28px;height:28px;margin:auto;border-right:3px solid currentColor;border-bottom:3px solid currentColor;content:""}
+.hero-prev::before{transform:rotate(135deg)}
+.hero-next::before{transform:rotate(-45deg)}
 
 .hero .hero-arrow:hover {
     transform: translateY(-50%) scale(1.12);
@@ -225,7 +228,6 @@
     .hero .hero-arrow {
         width: 68px;
         height: 100px;
-        font-size: 88px;
     }
 
 }

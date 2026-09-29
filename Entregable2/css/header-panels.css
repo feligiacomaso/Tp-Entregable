@@ -15,6 +15,10 @@
     background:#17191d;
     transform:translateX(-100%)
 }
+.menu-panel{scrollbar-color:#888d92 #17191d;scrollbar-width:thin}
+.menu-panel::-webkit-scrollbar{width:8px;background:#17191d}
+.menu-panel::-webkit-scrollbar-track{background:#17191d}
+.menu-panel::-webkit-scrollbar-thumb{border-radius:8px;background:#888d92}
 .menu-panel.is-open,.profile-panel.is-open{
     visibility:visible;
     opacity:1;

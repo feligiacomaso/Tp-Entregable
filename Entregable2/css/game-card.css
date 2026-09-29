@@ -147,7 +147,7 @@
 }
 
 .game-action .icon-play,.hero-action .icon-play {
-    filter: brightness(0) invert(1);
+    filter: brightness(0) saturate(100%);
 }
 
 .game-action .icon-shop,.hero-action .icon-shop {
