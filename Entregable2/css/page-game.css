@@ -11,7 +11,7 @@
     gap: 5px;
     width: 100%;
     max-width: 1000px;
-    margin: 0 auto 18px;
+    margin: 0 0 1.5% 0;
     color: #f3f3f3;
     font-size: 12px;
 }
@@ -26,14 +26,14 @@
 /* Reproductor principal */
 .player-panel {
     width: 100%;
-    max-width: 1000px;
-    margin: 0 auto 54px;
+    margin: 0;
     overflow: hidden;
     border-radius: 6px;
     background: #17191d;
 }
 
 .game-player {
+    width:100%;
     position: relative;
     display: grid;
     place-items: center;
@@ -449,7 +449,7 @@
     }
 
     .player-panel {
-        width: 84%;
+        width: 100%;
         margin-bottom: 62px;
     }
 
