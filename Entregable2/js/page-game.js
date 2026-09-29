@@ -1,5 +1,6 @@
 import { loadGames } from "./api.js";
 import { loadFooter } from "./footer.js";
+import { setupPegSolitaire } from "./peg-solitaire.js";
 
 const $ = selector => document.querySelector(selector);
 const params = new URLSearchParams(location.search);
@@ -133,14 +134,21 @@ function showGame(game) {
     setImage("#about-image", `${title}: imagen del juego`);
     setImage("#video-image", `${title}: video del juego`);
     $("#game-description").textContent = game.description || "Descubrí este juego y conocé todos sus detalles en Game House.";
+    $("#peg-rules").hidden = game.id !== "minion-peg-solitaire";
     $("#game-developer").textContent = names(game.developers) || game.developer || "Game House";
     $("#game-release").textContent = dateText(game.released);
     $("#game-updated").textContent = dateText(game.updated || game.last_updated);
     $("#game-platforms").textContent = names(game.platforms) || "Juega desde tu navegador web";
 
-    $("#launch-game").addEventListener("click", () => {
-        $("#game-player").classList.add("is-playing");
-    }, { once: true });
+    if (game.id === "minion-peg-solitaire") {
+        $("#player-image").hidden = true;
+        $("#game-player").classList.add("is-peg-game");
+        setupPegSolitaire($("#peg-solitaire"), $("#game-player"), $("#launch-game"));
+    } else {
+        $("#launch-game").addEventListener("click", () => {
+            $("#game-player").classList.add("is-playing");
+        }, { once: true });
+    }
 
     const favoriteKey = `game-house-favorite-${game.id ?? title}`;
     const favoriteButtons = document.querySelectorAll(".favorite-toggle,.favorite-cta");
@@ -165,12 +173,26 @@ function showGame(game) {
 }
 
 loadFooter();
-loadGames().then(({ byRating }) => {
-    const game = byRating.find(item => String(item.id ?? "").toLowerCase() === selected || item.name?.toLowerCase() === selected) || byRating[0];
-    if (game) showGame(game);
-}).catch(error => {
-    console.error("No se pudo cargar el juego:", error);
-    $("#breadcrumb-title").textContent = "No se pudo cargar el juego";
-    $("#player-title").textContent = "No se pudo cargar el juego";
-    $("#game-description").textContent = "Revisá tu conexión e intentá de nuevo.";
-});
+if (selected === "minion-peg-solitaire") {
+    showGame({
+        id: "minion-peg-solitaire",
+        name: "Minion Peg Solitaire",
+        genres: [{ name: "Solitario" }],
+        background_image: "img/peg_solitaire.png",
+        description: "Un clásico juego de estrategia y lógica en el que deberás mover las fichas sobre el tablero para ir eliminándolas una a una. Saltá una ficha sobre otra hacia un espacio vacío para retirarla del tablero. El objetivo es terminar con la menor cantidad de fichas posible, idealmente dejando solo una. Poné a prueba tu capacidad de planificación y encontrá la combinación de movimientos perfecta.",
+        developers: ["Game House"],
+        released: "2026-09-01",
+        updated: "2026-09-01",
+        platforms: ["Navegador web"]
+    });
+} else {
+    loadGames().then(({ byRating }) => {
+        const game = byRating.find(item => String(item.id ?? "").toLowerCase() === selected || item.name?.toLowerCase() === selected) || byRating[0];
+        if (game) showGame(game);
+    }).catch(error => {
+        console.error("No se pudo cargar el juego:", error);
+        $("#breadcrumb-title").textContent = "No se pudo cargar el juego";
+        $("#player-title").textContent = "No se pudo cargar el juego";
+        $("#game-description").textContent = "Revisá tu conexión e intentá de nuevo.";
+    });
+}

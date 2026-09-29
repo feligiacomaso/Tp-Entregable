@@ -1,0 +1,230 @@
+.peg-rules {
+    margin: 18px 0;
+    padding: 16px;
+    border-left: 3px solid #8a38f5;
+    border-radius: 0 8px 8px 0;
+    background: #20232a;
+}
+
+.peg-rules h2 {
+    margin: 0 0 8px;
+    font-size: 17px;
+}
+
+.peg-rules p {
+    margin: 0;
+    color: #e0e0e0;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.game-player.is-peg-game {
+    min-height: 360px;
+    background: radial-gradient(ellipse at 50% 44%, #152d56, #080d1a 72%);
+}
+
+.peg-game {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    display: none;
+    grid-template-rows: auto 1fr auto;
+    justify-items: center;
+    gap: 6px;
+    padding: 14px clamp(12px, 3vw, 38px) 10px;
+    color: #fff;
+}
+
+.game-player.is-peg-game #peg-solitaire {
+    display: grid;
+}
+
+.peg-game-stats {
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    gap: clamp(14px, 5vw, 54px);
+    width: 100%;
+}
+
+.peg-game-stats div {
+    display: grid;
+    gap: 2px;
+    text-align: center;
+}
+
+.peg-game-stats span {
+    color: #c6d1e8;
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+.peg-game-stats strong {
+    color: #f7c544;
+    font-size: clamp(15px, 2vw, 20px);
+}
+
+.peg-board {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    grid-template-rows: repeat(7, minmax(0, 1fr));
+    gap: 2px;
+    width: min(53vh, 42vw, 520px);
+    aspect-ratio: 1;
+    padding: 6%;
+    border: 2px solid #526b94;
+    background-color: #182943;
+    background-image: linear-gradient(#7390bd17 1px, transparent 1px), linear-gradient(90deg, #7390bd17 1px, transparent 1px), radial-gradient(ellipse at 50% 32%, #53677d, #26374d 65%, #101a2a);
+    background-size: 36px 36px, 36px 36px, cover;
+    clip-path: polygon(15% 0, 85% 0, 100% 50%, 85% 100%, 15% 100%, 0 50%);
+    filter: drop-shadow(0 14px 16px #000b);
+    transform: perspective(1000px) rotateX(7deg);
+}
+
+.peg-cell {
+    position: relative;
+    display: grid;
+    min-width: 0;
+    min-height: 0;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.peg-cell.is-invalid {
+    pointer-events: none;
+}
+
+.peg-cell.is-invalid::before {
+    display: none;
+}
+
+.peg-cell::before {
+    position: absolute;
+    width: 52%;
+    aspect-ratio: 1;
+    border: 2px solid #07101e;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 38%, #030813, #0a1424 68%, #24334a);
+    box-shadow: inset 0 3px 7px #000d, 0 1px 0 #8ba2c455;
+    content: "";
+    transition: box-shadow .18s, border-color .18s;
+}
+
+.peg-cell.is-valid-target::before {
+    border-color: #f7c544;
+    box-shadow: inset 0 3px 7px #000d, 0 0 12px #f7c544b8;
+}
+
+.peg-cell:disabled {
+    cursor: default;
+}
+
+.peg-minion {
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
+    object-fit: contain;
+    filter: drop-shadow(0 0 7px #a93aff);
+    transition: transform .16s, filter .16s;
+}
+
+.peg-cell.is-selected .peg-minion {
+    transform: scale(1.12);
+    filter: drop-shadow(0 0 5px #f7c544) drop-shadow(0 0 12px #a93aff);
+}
+
+.peg-cell:focus-visible {
+    outline: 2px solid #f7c544;
+    outline-offset: -2px;
+}
+
+.peg-game-controls {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.peg-game-controls p {
+    margin: 0;
+    color: #e5eaff;
+    font-size: 12px;
+}
+
+.peg-result:not([hidden]) {
+    position: absolute;
+    z-index: 5;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: #080b18d9;
+    text-align: center;
+}
+
+.peg-result h2 {
+    margin: 0;
+    color: #f7c544;
+    font-size: clamp(32px, 7vw, 64px);
+    font-weight: 800;
+    text-shadow: 0 0 22px #f7c54466;
+}
+
+.peg-result p {
+    margin: 10px 0 22px;
+    color: #fff;
+    font-size: clamp(14px, 2vw, 20px);
+}
+
+.peg-result button {
+    padding: 13px 24px;
+    border: 0;
+    border-radius: 28px;
+    background: #f7c544;
+    color: #17191d;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform .2s, background .2s;
+}
+
+.peg-result button:hover {
+    transform: scale(1.06);
+    background: #ffe17e;
+}
+
+@media (max-width: 759px) {
+    .game-player.is-peg-game {
+        height: min(100vw, 460px);
+        min-height: 350px;
+        aspect-ratio: auto;
+    }
+
+    .peg-game {
+        gap: 4px;
+        padding: 12px 10px 8px;
+    }
+
+    .peg-board {
+        width: min(65vw, 290px);
+    }
+
+    .peg-game-stats {
+        gap: 16px;
+    }
+
+    .peg-game-stats span {
+        font-size: 9px;
+    }
+
+    .peg-game-controls p {
+        max-width: 68%;
+        font-size: 10px;
+    }
+}
