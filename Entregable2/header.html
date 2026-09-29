@@ -1,17 +1,17 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/header.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
 </head>
 <body class="header-page">
     <header class="site-header">
-        <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+        <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-menu">
             <span></span>
             <span></span>
             <span></span>
@@ -25,11 +25,49 @@
                 <img src="img/icon_buscar.svg" alt="">
             </button>
         </label>
-        <button class="profile" aria-label="Perfil">
+        <button class="profile" type="button" aria-label="Abrir perfil" aria-expanded="false" aria-controls="profile-panel">
             <img src="img/icon_profile.svg" alt="">
         </button>
     </header>
- 
+
+    <!--MENU CON CATEGORIAS-->
+    <template id="menu-panel-template">
+        <aside class="menu-panel" id="site-menu" aria-hidden="true">
+            <nav aria-label="Menú principal">
+                <a href="index.html"><span class="category-icon" aria-hidden="true">⌂</span>Inicio</a>
+                <a href="#"><span class="category-icon" aria-hidden="true">✦</span>Nuevos</a>
+                <a href="#"><span class="category-icon" aria-hidden="true">♛</span>Populares</a>
+                <a href="#"><span class="category-icon" aria-hidden="true">★</span>Favoritos</a>
+                <a href="#"><span class="category-icon" aria-hidden="true">◆</span>Todas las categorías</a>
+                <div class="menu-divider" role="separator"></div>
+                <a href="#"><span class="category-icon" aria-hidden="true">●</span>Acción</a>
+                <a href="#"><span class="category-icon" aria-hidden="true">▣</span>Arcade</a>
+                <a href="#"><span class="category-icon" aria-hidden="true">◉</span>Aventuras</a>
+                <a href="#"><span class="category-icon" aria-hidden="true">♠</span>Solitario</a>
+                <a href="#"><span class="category-icon" aria-hidden="true">▤</span>Cocina</a>
+                <a href="#"><span class="category-icon" aria-hidden="true">⚯</span>Deportes</a>
+                <a href="#"><span class="category-icon" aria-hidden="true">◉</span>Conducir</a>
+                <a href="#"><span class="category-icon" aria-hidden="true">♟</span>Estrategia</a>
+                <a href="#"><span class="category-icon" aria-hidden="true">☷</span>Gestión</a>
+                <a href="#"><span class="category-icon" aria-hidden="true">⌕</span>Objetos ocultos</a>
+                <a href="#"><span class="category-icon" aria-hidden="true">✚</span>Rompecabezas</a>
+            </nav>
+        </aside>
+    </template>
+    <!-- PO UP PERFIL -->
+    <template id="profile-panel-template">
+        <aside class="profile-panel" id="profile-panel" aria-hidden="true">
+            <h2>Mi perfil</h2>
+            <nav aria-label="Menú de perfil">
+                <a href="#">Perfil</a>
+                <a href="#">Favoritos</a>
+                <a href="#">Wishlist</a>
+                <a href="#">Configuración</a>
+                <a href="#">Cerrar sesión</a>
+            </nav>
+        </aside>
+    </template>
+
     <script type="module" src="js/header.js"></script>
 </body>
 </html>

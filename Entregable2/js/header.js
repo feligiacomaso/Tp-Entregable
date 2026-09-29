@@ -1,56 +1,70 @@
-export function setupHeader() {
-    const parent = window.parent.document;
+function setupHeader() {
+    const hostDocument = window.parent.document;
     const menuButton = document.querySelector(".menu-toggle");
     const profileButton = document.querySelector(".profile");
-    const menuPanel = parent.createElement("aside");
-    const profilePanel = parent.createElement("aside");
 
-    menuPanel.className = "menu-panel";
-    menuPanel.innerHTML = `<nav aria-label="Menú principal">
-        <a href="index.html"><span class="category-icon">⌂</span>Inicio</a>
-        <a href="#"><span class="category-icon">✦</span>Nuevos</a>
-        <a href="#"><span class="category-icon">♛</span>Populares</a>
-        <a href="#"><span class="category-icon">★</span>Favoritos</a>
-        <a href="#"><span class="category-icon">◆</span>Todas las categorías</a>
-        <div class="menu-divider"></div>
-        <a href="#"><span class="category-icon">●</span>Acción</a>
-        <a href="#"><span class="category-icon">▣</span>Arcade</a>
-        <a href="#"><span class="category-icon">◉</span>Aventuras</a>
-        <a href="#"><span class="category-icon">♠</span>Solitario</a>
-        <a href="#"><span class="category-icon">▤</span>Cocina</a>
-        <a href="#"><span class="category-icon">⚯</span>Deportes</a>
-        <a href="#"><span class="category-icon">◉</span>Conducir</a>
-        <a href="#"><span class="category-icon">♟</span>Estrategia</a>
-        <a href="#"><span class="category-icon">☷</span>Gestión</a>
-        <a href="#"><span class="category-icon">⌕</span>Objetos ocultos</a>
-        <a href="#"><span class="category-icon">✚</span>Rompecabezas</a>
-    </nav>`;
-    profilePanel.className = "profile-panel";
-    profilePanel.innerHTML = `<h2>Mi perfil</h2><nav aria-label="Menú de perfil">
-        <a href="#">Perfil</a><a href="#">Favoritos</a><a href="#">Wishlist</a>
-        <a href="#">Configuración</a><a href="#">Cerrar sesión</a>
-    </nav>`;
-    parent.body.append(menuPanel, profilePanel);
+    if (!menuButton || !profileButton || hostDocument.getElementById("site-menu")) return;
 
-    const closeMenu = () => {
-        menuPanel.classList.remove("is-open");
-        menuButton.classList.remove("is-open");
-        menuButton.setAttribute("aria-expanded", "false");
-        menuButton.setAttribute("aria-label", "Abrir menú");
+    const copyTemplateToHost = templateId => {
+        const template = document.getElementById(templateId);
+        if (!template) return null;
+
+        const panel = hostDocument.importNode(template.content, true).firstElementChild;
+        hostDocument.body.append(panel);
+        return panel;
     };
+
+    const menuPanel = copyTemplateToHost("menu-panel-template");
+    const profilePanel = copyTemplateToHost("profile-panel-template");
+    if (!menuPanel || !profilePanel) return;
+
+    const setPanelOpen = (panel, button, isOpen, label) => {
+        panel.classList.toggle("is-open", isOpen);
+        panel.setAttribute("aria-hidden", String(!isOpen));
+        button.setAttribute("aria-expanded", String(isOpen));
+        button.setAttribute("aria-label", `${isOpen ? "Cerrar" : "Abrir"} ${label}`);
+    };
+
+    const closePanels = () => {
+        setPanelOpen(menuPanel, menuButton, false, "menú");
+        setPanelOpen(profilePanel, profileButton, false, "perfil");
+    };
+
     menuButton.addEventListener("click", () => {
-        const isOpen = menuPanel.classList.toggle("is-open");
-        menuButton.classList.toggle("is-open", isOpen);
-        menuButton.setAttribute("aria-expanded", String(isOpen));
-        menuButton.setAttribute("aria-label", isOpen ? "Cerrar menú" : "Abrir menú");
-        profilePanel.classList.remove("is-open");
+        const shouldOpen = !menuPanel.classList.contains("is-open");
+        closePanels();
+        setPanelOpen(menuPanel, menuButton, shouldOpen, "menú");
     });
+
     profileButton.addEventListener("click", () => {
-        profilePanel.classList.toggle("is-open");
-        menuPanel.classList.remove("is-open");
-        closeMenu();
+        const shouldOpen = !profilePanel.classList.contains("is-open");
+        closePanels();
+        setPanelOpen(profilePanel, profileButton, shouldOpen, "perfil");
     });
-    menuPanel.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
+
+    hostDocument.addEventListener("click", event => {
+        if (!menuPanel.contains(event.target) && !profilePanel.contains(event.target)) {
+            closePanels();
+        }
+    });
+
+    document.addEventListener("click", event => {
+        if (!event.target.closest(".menu-toggle, .profile")) closePanels();
+    });
+
+    hostDocument.addEventListener("keydown", event => {
+        if (event.key === "Escape") closePanels();
+    });
+
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape") closePanels();
+    });
+
+    [menuPanel, profilePanel].forEach(panel => {
+        panel.addEventListener("click", event => {
+            if (event.target.closest("a")) closePanels();
+        });
+    });
 }
 
 setupHeader();
