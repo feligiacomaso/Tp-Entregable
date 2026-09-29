@@ -1,5 +1,19 @@
 import { isFreeToPlay } from "./api.js";
 
+const categoryIcons = {
+    accion: "●", action: "●",
+    arcade: "▣",
+    aventuras: "◉", adventure: "◉",
+    solitario: "♠", solitaire: "♠",
+    cocina: "▤", cooking: "▤",
+    deportes: "⚯", sports: "⚯",
+    conducir: "◉", driving: "◉",
+    estrategia: "♟", strategy: "♟",
+    gestion: "☷", management: "☷",
+    "objetos ocultos": "⌕", "hidden objects": "⌕",
+    rompecabezas: "✚", puzzle: "✚"
+};
+
 export function createGameCard(game, { large = false, onPromote = null } = {}) {
     const card = document.createElement("article");
     card.className = `card ${isFreeToPlay(game) ? "is-free" : "is-paid"}`;
@@ -24,6 +38,19 @@ export function createGameCard(game, { large = false, onPromote = null } = {}) {
     name.textContent = game.name || "Juego sin título";
     art.append(name);
 
+    if (large) {
+        const category = document.createElement("span");
+        category.className = "art-category";
+        const categoryName = game.category || game.genres?.[0]?.name || "Juegos";
+        const normalized = categoryName.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        const icon = document.createElement("span");
+        icon.className = "category-icon";
+        icon.setAttribute("aria-hidden", "true");
+        icon.textContent = categoryIcons[normalized] || "◆";
+        category.append(icon, document.createTextNode(categoryName));
+        art.append(category);
+    }
+
     const free = isFreeToPlay(game);
     const action = document.createElement("button");
     action.className = large
@@ -31,6 +58,7 @@ export function createGameCard(game, { large = false, onPromote = null } = {}) {
         : `game-action ${free ? "is-free" : "is-paid"}`;
     action.type = "button";
     action.setAttribute("aria-label", `${free ? "Jugar" : "Comprar"} ${game.name || "juego"}`);
+    if (!large) action.setAttribute("aria-expanded", "false");
     action.innerHTML = free
         ? '<b>Jugar</b><img class="action-icon icon-play" src="img/icon_play.svg" alt="">'
         : '<b>Comprar</b><img class="action-icon icon-shop" src="img/icon_shop.svg" alt="">';
@@ -52,6 +80,11 @@ export function createGameCard(game, { large = false, onPromote = null } = {}) {
     card.setAttribute("role", "button");
     card.setAttribute("aria-label", `Ver detalles de ${game.name || "juego"}`);
     const activate = () => {
+        if (!large && !card.classList.contains("is-action-open")) {
+            card.classList.add("is-action-open");
+            action.setAttribute("aria-expanded", "true");
+            return;
+        }
         if (large && !card.classList.contains("is-active") && onPromote) onPromote();
         else location.href = `page-game.html?game=${encodeURIComponent(game.id ?? game.name)}`;
     };

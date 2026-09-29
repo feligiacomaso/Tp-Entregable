@@ -343,6 +343,46 @@
     color: #f7c544;
 }
 
+.reply-list {
+    margin: 12px 0 0 14px;
+    padding-left: 12px;
+    border-left: 1px solid #3a3d44;
+}
+
+.comment-reply {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    align-items: start;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.reply-avatar {
+    width: 22px;
+    height: 22px;
+}
+
+.reply-avatar img {
+    width: 15px;
+    height: 15px;
+}
+
+.comment-reply small {
+    margin-right: 8px;
+    color: #fff;
+}
+
+.comment-reply time {
+    color: #85898f;
+    font-size: 11px;
+}
+
+.comment-reply p {
+    margin: 4px 0 0;
+    color: #e7e7e7;
+    font-size: 13px;
+}
+
 /* Contenido lateral */
 .game-sidebar {
     display: flex;

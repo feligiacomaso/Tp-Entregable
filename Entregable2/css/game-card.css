@@ -165,7 +165,13 @@
     white-space: nowrap;
 }
 
-.game-action:hover,.game-action:focus-visible {
+.card:hover .game-action,
+.game-action:focus-visible {
+    width: 82px;
+    box-shadow: 0 0 12px #ffd22c88;
+}
+
+.card.is-action-open .game-action {
     width: 82px;
     box-shadow: 0 0 12px #ffd22c88;
 }
@@ -174,7 +180,12 @@
     box-shadow: 0 0 14px #8a38f588;
 }
 
-.game-action:hover b,.game-action:focus-visible b {
+.card:hover .game-action b,
+.game-action:focus-visible b {
+    opacity: 1;
+}
+
+.card.is-action-open .game-action b {
     opacity: 1;
 }
 
@@ -201,14 +212,5 @@
     .card:hover .art-image {
         transform: none;
     }
-
-    .game-action {
-        width: 82px;
-    }
-
-    .game-action b {
-        opacity: 1;
-    }
-
 }
 
