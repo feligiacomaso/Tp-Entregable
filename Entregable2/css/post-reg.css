@@ -1,0 +1,125 @@
+/* textos*/
+
+.t1 {
+    font-size:35px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.t2 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+a {
+    color: #ffff;
+    text-decoration:underline;
+    text-decoration-color: #8A38F5;
+}
+
+.body {
+    font-size: 15px;
+    color: #ffff;
+    margin: 0% 3% 10% 3%;
+    text-align:center;
+    font-weight: lighter;
+}
+
+.caption {
+    font-size: 13px;
+    color: #ffff;
+    text-align: center;
+    margin-bottom:8%;
+}
+
+
+
+.c1 {
+    display: grid;
+    grid-template-columns: 1.5fr 2.5fr 1fr;
+    column-gap: 10px;
+}
+
+.c2 {
+    height: 100vh;
+    display: flex;
+    align-items: center ;
+    justify-content: center;
+}
+
+.logo-c {
+    position: relative;
+    height: 100vh;
+}
+
+#logo {
+    position: absolute;
+    top: 4%;
+    left: 10%;
+    transform: translateX(-10%);
+    width: 55%;
+}
+
+#logo img{
+    width: 100%;
+    height: auto;
+}
+
+a {
+    color: #ffff;
+    text-decoration:underline;
+    text-decoration-color: #8A38F5;
+}
+
+/*Body*/
+
+body {
+    font-family: 'Asap', sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+.login {
+    background-image: url("../src/fondo.jpeg");
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+.tarjeta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #8A38F5;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+    width: 50%;
+    height: adjust fit-content;
+    background-color: #181B1D;
+}
+#ingreso {
+    background-color: #17191d;
+    color: #ffff; /*color de p dentro del form*/
+}
+
+.amarillo {
+    margin-top: 5%;
+    margin-bottom: 10%;
+    width: fit-content;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #F7C544;
+    color: #121212;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}

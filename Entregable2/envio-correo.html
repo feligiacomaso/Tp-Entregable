@@ -5,9 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Game.House - Log in</title>
+    <title>Game.House | Activacion</title>
 
-    <link rel="stylesheet" href="css/log-in.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/post-reg.css">
 </head>
 
 <body class="login">
@@ -22,24 +25,25 @@
                 
             </div>
 
+            <!-- CONTENIDO PRINCIPAL-->
             <div class="c2">
-                <div class="forms" id="ingreso">
+                <div class="tarjeta" id="ingreso">
     
                         <p class="t1">Te enviamos un correo !</p>
 
-                        <div class="inputs">
-                            <p class="t2">Para confirmar la creacion de tu cuenta te hemos enviado un enlace de 
-                                activacion a tu correo. Solo tienes que pulsarlo para crear tu cuenta.
-                            </p>
-                        </div>
+                        <p class="body" id="">Para confirmar la creacion de tu cuenta te hemos enviado un enlace de 
+                            activacion a tu correo. Solo tienes que pulsarlo para crear tu cuenta.
+                        </p>
 
-                        <!--BOTON MODIFICAR-->
-                        <a href="enlace-activacion.html">
+                        <!--<a href="enlace-activacion.html">
                             <span>Confirmar correo</span>
-                        </a>
+                        </a>-->
+                        <form action="enlace-activacion.html">
+                        <button class="amarillo" type="submit"> Confirmar Correo</button>
+                        </form>
 
-                        <p class="body">¿No has recibido el enlace? Mira en la carpeta 
-                            de spam o pulsa <a href="reenviar.html"><span class="link">reenviar</span></a>
+                        <p class="caption">¿No has recibido el enlace? Mira en la carpeta
+                            de spam o pulsa <a href="reenviar.html"><span >reenviar</span></a>
                         </p>
 
                 </div>

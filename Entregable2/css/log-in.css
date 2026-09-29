@@ -2,6 +2,7 @@
 
 .t1 {
     font-size:35px;
+    font-weight: bold;
 }
 
 .t2 {
@@ -54,7 +55,14 @@ a {
 /*Body*/
 
 body {
-    font:Asap;
+    font-family: 'Asap', sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
 }
 
 .login {
@@ -75,7 +83,7 @@ body {
     padding: 20px;
     margin: 20px;
     width: 70%;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     background-color: #181B1D;
 }
@@ -111,7 +119,7 @@ body {
     border-color: #90B4D9;
 }
 
-.forms button {
+.forms .amarillo {
     margin-top: 10px;
     width: 100%;
     padding: 14px;
@@ -125,7 +133,7 @@ body {
     transition: background-color 0.2s ease;
 }
 
-.forms button:hover {
+.forms .amarillo:hover {
     background-color: #16150f;
 }
 
@@ -153,36 +161,36 @@ body {
 }
 
 .forms .social-btn {
-    display: flex !important;
-    align-items: center !important;
-    position: relative !important;
-    width: 100% !important;
-    padding: 12px 16px !important;
-    background-color: #1a1c1e !important;
-    border: 1px solid #33383d !important;
-    border-radius: 24px !important;
-    color: #ffffff !important;
-    font-size: 14px !important;
-    font-weight: 400 !important;
-    cursor: pointer !important;
-    margin-top: 0 !important;
+    display: flex;
+    align-items: center ;
+    position: relative ;
+    width: 100% ;
+    padding: 12px 16px ;
+    background-color: #1a1c1e ;
+    border: 1px solid #33383d ;
+    border-radius: 24px ;
+    color: #ffffff ;
+    font-size: 14px ;
+    font-weight: 400 ;
+    cursor: pointer ;
+    margin-top: 0 ;
     transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 .forms .social-btn:hover {
-    background-color: #24272a !important;
-    border-color: #555d66 !important;
+    background-color: #24272a ;
+    border-color: #555d66 ;
 }
 
 .forms .social-icon {
-    width: 20px !important;
-    height: 20px !important;
+    width: 20px ;
+    height: 20px ;
     object-fit: contain;
-    position: absolute !important;
-    left: 20px !important;
+    position: absolute ;
+    left: 20px ;
 }
 
 .forms .social-text {
-    width: 100% !important;
-    text-align: center !important;
+    width: 100% ;
+    text-align: center ;
 }
