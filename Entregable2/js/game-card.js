@@ -1,5 +1,4 @@
 import { isFreeToPlay } from "./api.js";
-import { openGameDetails } from "./game-details.js";
 
 export function createGameCard(game, { large = false, onPromote = null } = {}) {
     const card = document.createElement("article");
@@ -54,7 +53,7 @@ export function createGameCard(game, { large = false, onPromote = null } = {}) {
     card.setAttribute("aria-label", `Ver detalles de ${game.name || "juego"}`);
     const activate = () => {
         if (large && !card.classList.contains("is-active") && onPromote) onPromote();
-        else openGameDetails(game);
+        else location.href = `page-game.html?game=${encodeURIComponent(game.id ?? game.name)}`;
     };
     card.addEventListener("click", activate);
     card.addEventListener("keydown", event => {
