@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Game.House - Log in</title>
+
+    <link rel="stylesheet" href="css.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+
+<body>
+            <main class="game-details-container">
+                <!-- Columna Izquierda: Información del juego, imagen y cómo jugar -->
+                <div class="game-main-info">
+                    <section class="game-section">
+                        <h2 class="t1">Acerca del juego</h2>
+                        <p class="body" id="game-description">Un clásico juego de estrategia y lógica...</p>
+                    </section>
+
+                    <div class="game-banner">
+                        <img id="game-image" src="img/peg-solitaire.png" alt="Peg Solitaire">
+                    </div>
+
+                    <section class="game-section">
+                        <h2 class="t1">Como jugar</h2>
+                        <p class="body" id="game-instructions">El objetivo del Solitario de clavijas es eliminar las fichas...</p>
+                    </section>
+
+                    <button class="favorite-btn" type="button">
+                        Favoritos <span class="star">★</span>
+                    </button>
+                </div>
+
+                <!-- Columna Derecha: Video y Tarjeta gris de especificaciones -->
+                <div class="game-sidebar">
+                    <div class="game-video-container">
+                        <!-- Aquí puedes usar una etiqueta video o un iframe -->
+                        <img src="img/video-preview.png" alt="Video del juego" class="video-preview">
+                        <span class="play-icon">▶</span>
+                    </div>
+                    <p class="t2">Video del juego</p>
+
+                    <!-- Tarjeta Gris de Información -->
+                    <div class="info-card">
+                        <h3 class="t2" style="margin-bottom: 20px;">Informacion del juego</h3>
+                        
+                        <div class="info-group">
+                            <span class="info-title">Desarrollador</span>
+                            <span class="info-text" id="dev-name">Game House.</span>
+                        </div>
+
+                        <div class="info-group">
+                            <span class="info-title">Publicacion</span>
+                            <span class="info-text" id="pub-date">Septiembre de 2026.</span>
+                        </div>
+
+                        <div class="info-group">
+                            <span class="info-title">Ultima actualizacion</span>
+                            <span class="info-text" id="update-date">Septiembre de 2026.</span>
+                        </div>
+
+                        <div class="info-group">
+                            <span class="info-title">Plataforma</span>
+                            <span class="info-text" id="platform-text">Juega gratis desde tu navegador web</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+            <script src="js.js"></script>
+</body>
+</html>

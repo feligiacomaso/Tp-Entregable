@@ -1,0 +1,115 @@
+main {
+    height: 100vh;;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+}
+
+.game-details-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    padding: 40px;
+    color: #ffffff;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.game-main-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.game-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.game-banner img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+/* Botón de favoritos violeta con puntas redondeadas */
+.favorite-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #8A38F5;
+    color: #ffffff;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    width: fit-content;
+    box-shadow: 0 4px 10px rgba(138, 56, 245, 0.4);
+}
+
+/* Columna lateral y tarjeta gris */
+.game-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.game-video-container {
+    position: relative;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+}
+
+.video-preview {
+    width: 100%;
+    display: block;
+    opacity: 0.8;
+}
+
+.play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 15px 20px;
+    border-radius: 50%;
+    color: white;
+}
+
+/* Estilo de la tarjeta gris oscura con bordes redondeados */
+.info-card {
+    background-color: #555d66; /* Tono gris de la tarjeta */
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    border: 2px solid #333;
+}
+
+.info-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.info-title {
+    font-weight: bold;
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.info-text {
+    font-size: 14px;
+    color: #dddddd;
+}
