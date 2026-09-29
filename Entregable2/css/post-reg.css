@@ -1,79 +1,9 @@
-/* textos*/
-
-.t1 {
-    font-size:35px;
-    font-weight: bold;
-    text-align: center;
+* {
+    box-sizing: border-box;
 }
-
-.t2 {
-    font-size: 20px;
-    font-weight: bold;
-}
-
-a {
-    color: #ffff;
-    text-decoration:underline;
-    text-decoration-color: #8A38F5;
-}
-
-.body {
-    font-size: 15px;
-    color: #ffff;
-    margin: 0% 3% 10% 3%;
-    text-align:center;
-    font-weight: lighter;
-}
-
-.caption {
-    font-size: 13px;
-    color: #ffff;
-    text-align: center;
-    margin-bottom:8%;
-}
-
-
-
-.c1 {
-    display: grid;
-    grid-template-columns: 1.5fr 2.5fr 1fr;
-    column-gap: 10px;
-}
-
-.c2 {
-    height: 100vh;
-    display: flex;
-    align-items: center ;
-    justify-content: center;
-}
-
-.logo-c {
-    position: relative;
-    height: 100vh;
-}
-
-#logo {
-    position: absolute;
-    top: 4%;
-    left: 10%;
-    transform: translateX(-10%);
-    width: 55%;
-}
-
-#logo img{
-    width: 100%;
-    height: auto;
-}
-
-a {
-    color: #ffff;
-    text-decoration:underline;
-    text-decoration-color: #8A38F5;
-}
-
-/*Body*/
 
 body {
+    margin: 0;
     font-family: 'Asap', sans-serif;
 }
 
@@ -85,41 +15,142 @@ textarea {
 }
 
 .login {
-    background-image: url("../src/fondo.jpeg");
     min-height: 100vh;
-    background-size: cover;
-    background-position: center;
+    background: #17191d url("../src/fondo.jpeg") center / cover fixed;
+}
+
+.c1 {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 100vh;
+    padding: 0 16px 24px;
+}
+
+.logo-c {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 8px;
+}
+
+#logo {
+    display: block;
+    width: 130px;
+}
+
+#logo img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.c2 {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.c1 > .c2:last-child {
+    display: none;
 }
 
 .tarjeta {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    border: 2px solid #8A38F5;
+    width: min(100%, 480px);
+    padding: 24px 20px;
+    border: 2px solid #8a38f5;
     border-radius: 8px;
-    padding: 20px;
-    margin: 20px;
-    width: 50%;
-    height: adjust fit-content;
-    background-color: #181B1D;
+    margin: 0 auto;
+    background: #17191d;
+    color: #fff;
+    text-align: center;
 }
-#ingreso {
-    background-color: #17191d;
-    color: #ffff; /*color de p dentro del form*/
+
+.t1 {
+    margin: 0 0 18px;
+    font-size: clamp(28px, 8vw, 35px);
+    font-weight: 700;
+}
+
+.t2 {
+    margin: 0 0 14px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.body {
+    margin: 0 0 22px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.caption {
+    margin: 8px 0 0;
+    color: #fff;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+a {
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: #8a38f5;
+}
+
+.tarjeta form {
+    width: 100%;
 }
 
 .amarillo {
-    margin-top: 5%;
-    margin-bottom: 10%;
-    width: fit-content;
+    width: 100%;
     padding: 14px;
-    border: none;
+    border: 0;
     border-radius: 8px;
-    background-color: #F7C544;
+    margin: 0 0 10px;
+    background: #f7c544;
     color: #121212;
-    font-weight: bold;
     font-size: 15px;
+    font-weight: 700;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background-color .2s ease;
+}
+
+.amarillo:hover {
+    background: #fce8ad;
+}
+
+@media (min-width: 760px) {
+    .c1 {
+        display: grid;
+        grid-template-columns: minmax(180px, 1fr) minmax(320px, 480px) minmax(180px, 1fr);
+        align-items: center;
+        gap: 20px;
+        padding: 0 24px;
+    }
+
+    .logo-c {
+        align-self: start;
+        padding-top: 32px;
+    }
+
+    #logo {
+        width: 150px;
+    }
+
+    .c2 {
+        min-height: 100vh;
+    }
+
+    .c1 > .c2:last-child {
+        display: flex;
+    }
+
+    .tarjeta {
+        padding: 30px;
+    }
 }
