@@ -132,8 +132,8 @@ textarea {
 
 .terms-consent__checkbox {
     flex: 0 0 auto;
-    width: 16px;
-    height: 16px;
+    width: 10px;
+    height: 10px;
     margin: 2px 0 0;
     accent-color: #8a38f5;
 }

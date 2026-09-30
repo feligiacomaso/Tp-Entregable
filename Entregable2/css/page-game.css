@@ -674,6 +674,7 @@
     color: #fff;
     font-weight: 700;
 }
+/*estilo del boton simple*/
 
 .btn-style906::before {
     content: "";
@@ -685,6 +686,7 @@
     background: #502983;
     transition: width 0.35s;
 }
+/*estilo del boton*/
 
 .btn-style906::after {
     display: flex;
