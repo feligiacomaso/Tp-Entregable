@@ -159,7 +159,15 @@ textarea {
     display: none;
 }
 
+form img {
+    height: 70px;
+    display: block;
+    object-fit: contain;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 
+}
 
 .registration-success {
     display: none;
@@ -215,6 +223,8 @@ a {
 .forms .amarillo:hover {
     background: #fce8ad;
 }
+
+/*bOTONES SOCIAL*/
 
 .forms .social-login {
     display: flex;

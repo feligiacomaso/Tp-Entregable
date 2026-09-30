@@ -56,7 +56,7 @@
             </section>
 
             <div class="game-content">
-                <div class="game-main-info">
+                <div class="game-card-info">
                     <section class="about-section" id="about-game">
                         <h1>Acerca del juego</h1>
                         <p id="game-description">Cargando información...</p>
@@ -68,23 +68,22 @@
                                 <img class="about-image" id="about-image-secondary" alt="">
                             </div>
                         </div>
+                        <div class="how-to-play">
+                            <h2>Cómo jugar</h2>
+                            <p>El objetivo del Solitario de clavijas (o Senku) es eliminar las fichas mediante saltos hasta que solo quede una ficha en el centro del tablero.</p>
+                            <h3>Reglas básicas</h3>
+                            <ul>
+                                <li><strong>Posición inicial:</strong> Llena todo el tablero con fichas y deja vacío únicamente el agujero del centro.</li>
+                                <li><strong>Movimiento válido:</strong> Toma una ficha y hazla saltar de manera horizontal o vertical sobre una ficha adyacente que tenga un espacio libre justo detrás. No se permiten los saltos en diagonal.</li>
+                                <li><strong>Eliminación:</strong> La ficha que fue saltada se retira del tablero.</li>
+                                <li><strong>Fin del juego:</strong> Termina cuando ya no puedes hacer más saltos. Ganas si logras dejar una sola pieza.</li>
+                            </ul>
+                        </div>
+                        <button class="btn-style906 favorite-cta is-favorite" type="button" data-hover="Agregar +" data-hover-click="Agregado!" aria-pressed="true">
+                            Favoritos ★
+                        </button>
                     </section>
-
-                    <button class="btn-style906 favorite-cta" type="button" data-hover="Agregar +" data-hover-click="Agregado!" aria-pressed="false">
-                        Favoritos ★
-                    </button>
-
-                    <section class="comments-section">
-                        <h2>Comentarios</h2>
-                        <form class="comment-form">
-                            <span class="comment-avatar current-user" aria-hidden="true"><img src="src/icon_profile.svg" alt=""></span>
-                            <input name="comment" placeholder="Agrega un comentario..." aria-label="Agrega un comentario" required maxlength="500">
-                            <button type="submit" aria-label="Publicar comentario"><span>Comentar</span></button>
-                        </form>
-                        <div class="comment-list" id="comment-list" aria-live="polite"></div>
-                    </section>
-                </div>
-                <aside class="game-sidebar">
+                    <aside class="game-sidebar" aria-label="Video e información del juego">
                     <section class="video-section">
                         <button class="video-preview" id="video-preview" type="button" aria-label="Reproducir video del juego">
                             <img id="video-image" alt="">
@@ -100,7 +99,17 @@
                         <div><h3>Última actualización</h3><p id="game-updated">No informada</p></div>
                         <div><h3>Plataforma</h3><p id="game-platforms">Juega desde tu navegador web</p></div>
                     </section>
-                </aside>
+                    </aside>
+                </div>
+                <section class="comments-section">
+                    <h2>Comentarios</h2>
+                    <form class="comment-form">
+                        <span class="comment-avatar current-user" aria-hidden="true"><img src="src/icon_profile.svg" alt=""></span>
+                        <input name="comment" placeholder="Agrega un comentario..." aria-label="Agrega un comentario" required maxlength="500">
+                        <button type="submit" aria-label="Publicar comentario"><span>Comentar</span></button>
+                    </form>
+                    <div class="comment-list" id="comment-list" aria-live="polite"></div>
+                </section>
             </div>
         </main>
         <div id="site-footer"></div>

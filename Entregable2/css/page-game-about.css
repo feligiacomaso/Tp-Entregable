@@ -1,12 +1,66 @@
 /* Descripción e instrucciones */
 .game-content {
-    display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(250px, 1fr);
-    gap: 5.5%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
 }
 
-.game-main-info {
+.game-card-info {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: stretch;
+    gap: 24px;
     min-width: 0;
+}
+
+.about-section {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.how-to-play {
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
+.about-section > .favorite-cta {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+.how-to-play h2,
+.how-to-play h3 {
+    margin: 0 0 8px;
+    font-size: 16px;
+}
+
+.how-to-play p,
+.how-to-play li {
+    color: #e0e0e0;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.how-to-play p {
+    margin: 0 0 12px;
+}
+
+.how-to-play ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.how-to-play li + li {
+    margin-top: 6px;
+}
+
+@media (max-width: 700px) {
+    .game-card-info {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .about-section > .favorite-cta { margin-top: 20px; }
 }
 
 .about-section h1,
