@@ -12,7 +12,7 @@ a.site-link:focus-visible {
     color: #fff;
     text-decoration-color: #f7c544;
 }
-a.Variant-site-link {
+a.variant-site-link {
     color: #fff;
     letter-spacing: .35px;
     transition: text-decoration-color .2s;

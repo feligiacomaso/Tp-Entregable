@@ -1,0 +1,91 @@
+/* Contenido lateral */
+.game-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.video-preview {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    padding: 0;
+    border: 0;
+    background: #17191d;
+    cursor: pointer;
+}
+
+.video-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: .8;
+}
+
+.video-play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #111b;
+    color: #fff;
+    font-size: 23px;
+    transform: translate(-50%, -50%);
+    transition: transform .2s;
+}
+
+.video-preview:hover .video-play {
+    transform: translate(-50%, -50%) scale(1.12);
+    color: #f7c544;
+}
+
+.video-section h2 {
+    margin-top: 8px;
+}
+
+.video-message {
+    margin: 7px 0;
+    color: #d8d8d8;
+    font-size: 12px;
+}
+
+.info-card {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    padding: 24px 20px;
+    margin-top: 0;
+    border-top: 4px solid #0477a8;
+    border-radius: 24px;
+    background: #55595b;
+    color: #fff;
+}
+
+.info-card h2 {
+    margin: 0 0 4px;
+    font-size: 18px;
+}
+
+.info-card h3 {
+    margin: 0 0 4px;
+    font-size: 15px;
+}
+
+.info-card p {
+    margin: 0;
+    color: #e3e3e3;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.game-page #site-footer {
+    margin-top: 0;
+}
+
+

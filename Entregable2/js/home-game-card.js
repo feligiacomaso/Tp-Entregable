@@ -15,8 +15,9 @@ const categoryIcons = {
 };
 
 export function createGameCard(game, { large = false, onPromote = null } = {}) {
+    const free = isFreeToPlay(game);
     const card = document.createElement("article");
-    card.className = `card ${isFreeToPlay(game) ? "is-free" : "is-paid"}`;
+    card.className = `card ${free ? "is-free" : "is-paid"}`;
     const art = document.createElement("div");
     art.className = "art";
 
@@ -51,7 +52,6 @@ export function createGameCard(game, { large = false, onPromote = null } = {}) {
         art.append(category);
     }
 
-    const free = isFreeToPlay(game);
     const action = document.createElement("button");
     action.className = large
         ? `hero-action ${free ? "is-free" : "is-paid"}`
@@ -60,8 +60,8 @@ export function createGameCard(game, { large = false, onPromote = null } = {}) {
     action.setAttribute("aria-label", `${free ? "Jugar" : "Comprar"} ${game.name || "juego"}`);
     if (!large) action.setAttribute("aria-expanded", "false");
     action.innerHTML = free
-        ? '<b>Jugar</b><img class="action-icon icon-play" src="img/icon_play.svg" alt="">'
-        : '<b>Comprar</b><img class="action-icon icon-shop" src="img/icon_shop.svg" alt="">';
+        ? '<b>Jugar</b><img class="action-icon icon-play" src="src/icon_play.svg" alt="">'
+        : '<b>Comprar</b><img class="action-icon icon-shop" src="src/icon_shop.svg" alt="">';
 
     const info = document.createElement("div");
     info.className = "card-info";

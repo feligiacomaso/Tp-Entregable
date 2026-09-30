@@ -1,6 +1,6 @@
 import { loadGames } from "./api.js";
-import { setupBannerCarousel } from "./banner-carousel.js";
-import { setupGameCarousels } from "./game-carousels.js";
+import { setupBannerCarousel } from "./home-banner-carousel.js";
+import { setupGameCarousels } from "./home-game-carousels.js";
 import { loadFooter } from "./footer.js";
 
 const loadingOverlay = document.querySelector("#home-loading");
@@ -35,7 +35,7 @@ const pegSolitaire = {
     id: "minion-peg-solitaire",
     name: "Minion Peg Solitaire",
     category: "Solitario",
-    background_image: "img/peg_solitaire.png",
+    background_image: "src/peg_solitaire.png",
     is_free: true,
     rating: 5
 };

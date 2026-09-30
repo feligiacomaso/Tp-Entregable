@@ -1,0 +1,250 @@
+/* Reproductor principal */
+.player-panel {
+    width: 100%;
+    margin: 0 0 62px;
+    overflow: hidden;
+    border-radius: 6px;
+    background: #17191d;
+}
+
+.game-player {
+    width:100%;
+    position: relative;
+    display: grid;
+    place-items: center;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #090a0d;
+}
+
+.game-player::after {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    background: #080b18a6;
+    content: "";
+    transition: opacity .35s ease;
+}
+
+.player-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(.62) saturate(.85);
+    transition: filter .35s ease;
+}
+
+.game-action-control {
+    display: inline-flex;
+    flex: 0 0 146px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 146px;
+    min-width: 46px;
+    height: 46px;
+    padding: 0 10px;
+    overflow: hidden;
+    border: 0;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: width .5s cubic-bezier(.22, .61, .36, 1), flex-basis .5s cubic-bezier(.22, .61, .36, 1), padding .45s ease, gap .4s ease, border-radius .5s ease, opacity .3s ease, visibility 0s;
+}
+
+.game-action-label {
+    flex: 0 0 auto;
+    max-width: 90px;
+    overflow: hidden;
+    opacity: 1;
+    white-space: nowrap;
+    transition: max-width .45s ease, opacity .38s ease;
+}
+
+.game-action-icon {
+    display: block;
+    flex: 0 0 19px;
+    width: 19px;
+    height: 19px;
+    object-fit: contain;
+}
+
+.game-action-control:hover,
+.game-action-control:focus-visible {
+    flex-basis: 46px;
+    width: 46px;
+    gap: 0;
+    padding-inline: 0;
+    border-radius: 50%;
+}
+
+.game-action-control:hover .game-action-label,
+.game-action-control:focus-visible .game-action-label {
+    max-width: 0;
+    opacity: 0;
+}
+
+.launch-game {
+    position: relative;
+    z-index: 2;
+    background: #8a38f5;
+    color: #111;
+    text-transform: uppercase;
+}
+
+.launch-game[hidden] {
+    display: none;
+}
+
+.paid-game-actions {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: min(100%, 302px);
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .3s ease, visibility 0s;
+}
+
+.paid-game-actions[hidden] {
+    display: none;
+}
+
+.paid-game-action {
+    flex: 1 1 146px;
+    min-width: 0;
+    background: #f7c544;
+    color: #111;
+}
+
+.paid-game-action:hover,
+.paid-game-action:focus-visible {
+    flex: 0 0 46px;
+}
+
+.paid-game-action .game-action-icon:not(.wishlist-plus) {
+    filter: brightness(0) saturate(100%);
+}
+
+.wishlist-plus {
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+    line-height: 1;
+}
+
+.return-game {
+    position: absolute;
+    z-index: 2;
+    right: clamp(12px, 3vw, 28px);
+    bottom: clamp(12px, 3vw, 28px);
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 24px;
+    background: #f7c544;
+    color: #111;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .3s ease, background .2s ease, transform .2s ease, visibility 0s linear .3s;
+}
+
+.return-game:hover {
+    transform: translateY(-2px);
+    background: #f7c544;
+}
+
+.return-game:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+.game-player.is-playing .return-game {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity .3s ease, background .2s ease, transform .2s ease;
+}
+
+.game-player.is-playing::after {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.game-player.is-playing .player-image {
+    filter: none;
+}
+
+.game-player.is-playing .launch-game {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease,transform .2s ease,visibility 0s linear .3s;
+}
+
+.game-player.is-playing .paid-game-actions {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease, visibility 0s linear .3s;
+}
+
+.player-message {
+    position: absolute;
+    inset: auto 12px 12px;
+    padding: 10px;
+    border-radius: 5px;
+    background: #17191ddd;
+    color: #fff;
+    text-align: center;
+}
+
+.player-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 34px;
+    padding: 5px 10px;
+    background: #55595b;
+    color: #fff;
+}
+
+.player-toolbar a,
+.player-toolbar button {
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #fff;
+    font-size: 20px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.player-toolbar a:hover,
+.player-toolbar button:hover {
+    color: #f7c544;
+    transform: scale(1.1);
+}
+
+.player-toolbar strong {
+    overflow: hidden;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.favorite-toggle[aria-pressed="true"] {
+    color: #f7c544;
+}
+

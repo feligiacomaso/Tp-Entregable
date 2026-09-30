@@ -1,4 +1,4 @@
-import { createGameCard } from "./game-card.js";
+import { createGameCard } from "./home-game-card.js";
 
 function setupCarousel(section, games) {
     const track = section.querySelector(".track");

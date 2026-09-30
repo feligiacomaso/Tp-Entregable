@@ -1,4 +1,4 @@
-import { createGameCard } from "./game-card.js";
+import { createGameCard } from "./home-game-card.js";
 
 export function setupBannerCarousel(games) {
     const section = document.querySelector(".featured");

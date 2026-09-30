@@ -8,6 +8,11 @@
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/header-panels.css">
         <link rel="stylesheet" href="css/page-game.css">
+        <link rel="stylesheet" href="css/page-game-player.css">
+        <link rel="stylesheet" href="css/page-game-about.css">
+        <link rel="stylesheet" href="css/page-game-comments.css">
+        <link rel="stylesheet" href="css/page-game-sidebar.css">
+        <link rel="stylesheet" href="css/page-game-favorites.css">
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/site-links.css">
         <script type="module" src="js/page-game.js"></script>
@@ -18,7 +23,7 @@
         <main class="game-page-main">
 
             <nav class="game-breadcrumb" aria-label="Migas de pan">
-                <a class="site-link" href="index.html">Juegos</a><span>›</span><a class="site-link" id="game-category" href="index.html">Categoría</a><span>›</span><span id="breadcrumb-title">Cargando juego...</span>
+                <a class="site-link" href="home.html">Juegos</a><span>›</span><a class="site-link" id="game-category" href="home.html">Categoría</a><span>›</span><span id="breadcrumb-title">Cargando juego...</span>
             </nav>
 
             <section class="player-panel" aria-label="Juego">
@@ -26,12 +31,12 @@
                     <img class="player-image" id="player-image" alt="">
                     <button class="game-action-control launch-game" id="launch-game" type="button" hidden>
                         <span class="game-action-label">Jugar</span>
-                        <img class="game-action-icon" src="img/icon_play.svg" alt="">
+                        <img class="game-action-icon" src="src/icon_play.svg" alt="">
                     </button>
                     <div class="paid-game-actions" id="paid-game-actions" role="group" aria-label="Opciones de compra" hidden>
                         <button class="game-action-control paid-game-action" id="buy-game" type="button">
                             <span class="game-action-label">Comprar</span>
-                            <img class="game-action-icon" src="img/icon_shop.svg" alt="">
+                            <img class="game-action-icon" src="src/icon_shop.svg" alt="">
                         </button>
                         <button class="game-action-control paid-game-action" id="wishlist-game" type="button">
                             <span class="game-action-label">Wishlist</span>
@@ -43,7 +48,7 @@
                 </div>
                 
                 <div class="player-toolbar">
-                    <a class="site-link" href="#about-game" aria-label="Ir a información del juego">ⓘ</a>
+                    <a class="variant-site-link" href="#about-game" aria-label="Ir a información del juego">ⓘ</a>
                     <button class="favorite-toggle" type="button" aria-label="Agregar a favoritos" aria-pressed="false">☆</button>
                     <button class="fullscreen-toggle" type="button" aria-label="Pantalla completa">⛶</button>
                     <strong id="player-title">Cargando juego...</strong>
@@ -65,16 +70,16 @@
                         </div>
                     </section>
 
-                    <button class="btn-style906" type="button" data-hover="Agregar +" data-hover-click="Agregado!" aria-pressed="false">
+                    <button class="btn-style906 favorite-cta" type="button" data-hover="Agregar +" data-hover-click="Agregado!" aria-pressed="false">
                         Favoritos ★
                     </button>
 
                     <section class="comments-section">
                         <h2>Comentarios</h2>
                         <form class="comment-form">
-                            <span class="comment-avatar current-user" aria-hidden="true"><img src="img/icon_profile.svg" alt=""></span>
+                            <span class="comment-avatar current-user" aria-hidden="true"><img src="src/icon_profile.svg" alt=""></span>
                             <input name="comment" placeholder="Agrega un comentario..." aria-label="Agrega un comentario" required maxlength="500">
-                            <button type="submit" aria-label="Publicar comentario">Comentar</button>
+                            <button type="submit" aria-label="Publicar comentario"><span>Comentar</span></button>
                         </form>
                         <div class="comment-list" id="comment-list" aria-live="polite"></div>
                     </section>

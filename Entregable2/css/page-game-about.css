@@ -1,0 +1,114 @@
+/* Descripción e instrucciones */
+.game-content {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(250px, 1fr);
+    gap: 5.5%;
+}
+
+.game-main-info {
+    min-width: 0;
+}
+
+.about-section h1,
+.comments-section h2,
+.video-section h2 {
+    margin: 0 0 7px;
+    font-size: 18px;
+}
+
+.about-section h1,
+.comments-section h2 {
+    width: 100%;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #0477a8;
+}
+
+.about-section p {
+    margin: 0 0 12px;
+    color: #e0e0e0;
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.about-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    pointer-events: none;
+    user-select: none;
+}
+
+.about-gallery {
+    position: relative;
+    width: 100%;
+    max-height: 350px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    perspective: 900px;
+    background: #17191d;
+}
+
+.about-gallery-card {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.about-gallery-card[hidden] {
+    display: none;
+}
+
+.about-gallery.is-stacked .about-gallery-card {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: 5px;
+    background: #20232a;
+    box-shadow: 0 15px 30px #0009;
+    cursor: pointer;
+    transition: transform .72s cubic-bezier(.2, .9, .25, 1.18), filter .55s ease, opacity .45s ease, box-shadow .3s ease;
+    transform-origin: center;
+}
+
+.about-gallery-card.is-front {
+    z-index: 2;
+    opacity: 1;
+    filter: brightness(1);
+    transform: translate3d(-12px, 12px, 0) rotate(-1deg) scale(.92);
+}
+
+.about-gallery-card.is-back {
+    z-index: 1;
+    border: 3px solid #8a38f5;
+    opacity: 1;
+    filter: brightness(.86);
+    box-shadow: 0 0 18px #8a38f5aa, 0 15px 30px #0009;
+    transform: translate3d(18px, -10px, -18px) rotate(4deg) scale(.96);
+}
+
+.about-gallery-card.is-front:hover {
+    box-shadow: 0 20px 36px #000b;
+}
+
+.about-gallery-card:focus-visible {
+    z-index: 3;
+    outline: 2px solid #f7c544;
+    outline-offset: -3px;
+    opacity: 1;
+    filter: brightness(1);
+    transform: translate3d(0, 0, 10px) scale(1.005);
+}
+
+.about-gallery.is-stacked .about-gallery-card img {
+    height: 100%;
+    max-height: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about-gallery.is-stacked .about-gallery-card {
+        transition-duration: .01ms;
+    }
+}
+

@@ -23,6 +23,7 @@ function setupHeader() {
         panel.setAttribute("aria-hidden", String(!isOpen));
         button.setAttribute("aria-expanded", String(isOpen));
         button.setAttribute("aria-label", `${isOpen ? "Cerrar" : "Abrir"} ${label}`);
+        if (button === menuButton) button.classList.toggle("is-open", isOpen);
     };
 
     const closePanels = () => {

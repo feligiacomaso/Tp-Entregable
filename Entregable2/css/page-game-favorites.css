@@ -1,0 +1,59 @@
+/* BOTON DE FAVORITOS */
+
+.btn-style906 {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 20px 0 24px;
+    padding: 10px 18px;
+    border: 0;
+    border-radius: 24px;
+    position: relative;
+    overflow: hidden;
+    background: #8a38f5;
+    border-color: #661ec5;
+    color: #fff;
+    font-weight: 700;
+}
+
+.btn-style906::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 4.5px;
+    background: #502983;
+    transition: width 0.35s;
+}
+
+.btn-style906::after {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* CENTRA TEXTO EN EL BOTON*/
+    content: attr(data-hover);
+    position: absolute;
+    inset: 0;
+    background: #9f5ff3;
+    transform: translateY(-100%);
+    transition: transform 0.35s;
+}
+
+.btn-style906:hover::before {
+    width: 100%;
+}
+
+.btn-style906:hover::after {
+    transform: translateY(0);
+}
+
+.btn-style906.is-favorite {
+    background: #f7c544;
+    color: #17191d;
+}
+
+.btn-style906.is-favorite::after {
+    content: attr(data-hover-click);
+    background: #f7c544;
+    color: #17191d;
+}

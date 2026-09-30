@@ -43,21 +43,9 @@
     font: 300 36px/1 system-ui,sans-serif;
 }
 
-.row-arrow::before{
-    display:block;
-    width:13px;
-    height:13px;
-    margin:auto;
-    border-right:2px solid currentColor;
-    border-bottom:2px solid currentColor;
-    content:""
-}
-.row-prev::before{
-    transform:rotate(135deg)
-}
-.row-next::before{
-    transform:rotate(-45deg)
-}
+.row-arrow::before{display:block;width:13px;height:13px;margin:auto;border-right:2px solid currentColor;border-bottom:2px solid currentColor;content:""}
+.row-prev::before{transform:rotate(135deg)}
+.row-next::before{transform:rotate(-45deg)}
 
 .game-section .row-arrow:hover {
     transform: translateY(-50%) scale(1.12);
@@ -78,31 +66,10 @@
     right: 0;
 }
 
-.carousel-pagination{
-    display:flex;
-    justify-content:center;
-    gap:7px;
-    margin-top:7px
-}
-.pagination-dot{
-    width:9px;
-    height:9px;
-    padding:0;
-    border:1px solid #777d89;
-    border-radius:99px;
-    background:#343943;
-    cursor:pointer;
-    transition:width .22s ease,background .22s ease,border-color .22s ease
-}
-.pagination-dot:hover{
-    border-color:#f7c544;
-    transform:scale(1.12)
-}
-.pagination-dot.is-active{
-    width:25px;
-    border-color:#f7c544;
-    background:#f7c544
-}
+.carousel-pagination{display:flex;justify-content:center;gap:7px;margin-top:7px}
+.pagination-dot{width:9px;height:9px;padding:0;border:1px solid #777d89;border-radius:99px;background:#343943;cursor:pointer;transition:width .22s ease,background .22s ease,border-color .22s ease}
+.pagination-dot:hover{border-color:#f7c544;transform:scale(1.12)}
+.pagination-dot.is-active{width:25px;border-color:#f7c544;background:#f7c544}
 
 @media(min-width:601px) {
     .game-section {

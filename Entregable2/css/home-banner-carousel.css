@@ -185,21 +185,9 @@
     transform: translateY(-50%);
 }
 
-.hero-arrow::before{
-    display:block;
-    width:28px;
-    height:28px;
-    margin:auto;
-    border-right:3px solid currentColor;
-    border-bottom:3px solid currentColor;
-    content:""
-}
-.hero-prev::before{
-    transform:rotate(135deg)
-}
-.hero-next::before{
-    transform:rotate(-45deg)
-}
+.hero-arrow::before{display:block;width:28px;height:28px;margin:auto;border-right:3px solid currentColor;border-bottom:3px solid currentColor;content:""}
+.hero-prev::before{transform:rotate(135deg)}
+.hero-next::before{transform:rotate(-45deg)}
 
 .hero .hero-arrow:hover {
     transform: translateY(-50%) scale(1.12);
