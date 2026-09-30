@@ -208,3 +208,9 @@ if (selected === "minion-peg-solitaire") {
         $("#game-description").textContent = "Revisá tu conexión e intentá de nuevo.";
     });
 }
+ // BOTON FAV onCLICK
+const button = document.querySelector(".btn-style906");
+
+button.addEventListener("click", () => {
+    button.classList.toggle("is-favorite");
+});
