@@ -80,7 +80,7 @@
 
 .profile-panel {
     right: 0;
-    width: 100vw;
+    width: 280px;
     min-height: 276px;
     padding: 22px 18px;
     background: #383c3f;
@@ -104,18 +104,16 @@
 }
 
 @media (max-width: 699px) {
-    .menu-panel,
-    .profile-panel {
+    .home-page .menu-panel,
+    .home-page .profile-panel {
         top: 121px;
     }
 
-    .menu-panel {
-        height: calc(100vh - 121px);
+    .home-page .profile-panel {
+        width: 100vw;
     }
-}
 
-@media (min-width: 700px) {
-    .profile-panel {
-        width: 280px;
+    .home-page .menu-panel {
+        height: calc(100vh - 121px);
     }
 }

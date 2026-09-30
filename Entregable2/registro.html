@@ -11,7 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/log-in.css">
-    <script type="module" src="js/register.js"></script>
+    <link rel="stylesheet" href="css/site-links.css">
+    <script type="module" src="js/form-validation.js"></script>
 </head>
 
 <body class="login">
@@ -32,28 +33,39 @@
                     <p class="t1">Crea tu cuenta !</p>
 
                     <div class="inputs">
-                        <form action="envio-correo.html">
-                            <label for="nombre">Nombre <span style="color: red;">*</span></label>
-                            <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
+                        <form action="envio-correo.html" data-validate-required novalidate>
+                            <label for="nombre">Nombre <span class="required-indicator" aria-hidden="true">*</span></label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Nombre" aria-describedby="nombre-error" required>
+                            <span class="field-error" id="nombre-error" aria-live="polite" hidden></span>
 
                             <label for="username">Nombre de usuario</label>
                             <input type="text" id="username" name="username" placeholder="Nombre de ususario">
 
-                            <label for="email">Correo electrónico <span style="color: red;">*</span></label>
-                            <input type="email" id="email" name="email" placeholder="tuemail@gmail.com" required>
+                            <label for="email">Correo electrónico <span class="required-indicator" aria-hidden="true">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="tuemail@gmail.com" aria-describedby="email-error" required>
+                            <span class="field-error" id="email-error" aria-live="polite" hidden></span>
 
-                            <label for="password">Contraseña <span style="color: red;">*</span></label>
-                            <input type="password" id="password" name="password" placeholder="*********" required>
+                            <label for="password">Contraseña <span class="required-indicator" aria-hidden="true">*</span></label>
+                            <input type="password" id="password" name="password" placeholder="*********" aria-describedby="password-error" required>
+                            <span class="field-error" id="password-error" aria-live="polite" hidden></span>
 
-                            <label for="repeat-password">Repetir contraseña <span style="color: red;">*</span></label>
-                            <input type="password" id="repeat-password" name="repeat-password" placeholder="*********" required>
+                            <label for="repeat-password">Repetir contraseña <span class="required-indicator" aria-hidden="true">*</span></label>
+                            <input type="password" id="repeat-password" name="repeat-password" placeholder="*********" aria-describedby="repeat-password-error" data-matches="#password" required>
+                            <span class="field-error" id="repeat-password-error" aria-live="polite" hidden></span>
+
+                            <div class="terms-consent">
+                                <label class="terms-consent__label" for="terms-accepted">
+                                    <input class="terms-consent__checkbox" type="checkbox" id="terms-accepted" name="terms-accepted" value="accepted" aria-describedby="terms-error" data-required-message="Debés aceptar los términos y condiciones para registrarte." required>
+                                    <span>Acepto los <a class="site-link" href="terminos-y-condiciones.html">términos y condiciones</a></span>
+                                </label>
+                                <span class="field-error" id="terms-error" aria-live="polite" hidden></span>
+                            </div>
+
+                            <p class="registration-success" role="status">&#10003; Registro realizado correctamente</p>
 
                             <!-- captcha -->
                             
                                 <button class="amarillo" type="submit">REGISTRARME</button>
-                            <!--<a href="envio-correo.html" class="forms">
-                                <span class="social-text">REGISTRARME</span>
-                            </a>-->
 
                         </form>
                     </div>

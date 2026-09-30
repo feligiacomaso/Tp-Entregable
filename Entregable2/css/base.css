@@ -14,6 +14,11 @@ body {
     font: 14px 'Asap', sans-serif;
 }
 
+.t1 {
+    font-size: 25px;
+    margin: 0 0 0 0px ;
+}
+
 button,
 input,
 select,
@@ -32,7 +37,7 @@ body>main {
 }
 
 .featured,.game-section {
-    margin-bottom: 24px;
+    margin-bottom: 5%;
 }
 
 .section-title {
@@ -60,26 +65,27 @@ body>main {
 }
 
 @media(min-width:601px) {
-    main {
+    .home-page main {
         padding: 20px 3% 48px;
     }
 
-    .featured,.game-section {
-        margin-bottom: 28px;
+    .home-page .featured,
+    .home-page .game-section {
+        margin-bottom: 5%;
     }
 
-    .featured-title {
+    .home-page .featured-title {
         font-size: 25px;
     }
 
-    .section-title h2 {
+    .home-page .section-title h2 {
         font-size: 17px;
     }
 
 }
 
 @media(min-width:901px) {
-    main {
+    .home-page main {
         padding: 22px 4.5% 50px;
     }
 

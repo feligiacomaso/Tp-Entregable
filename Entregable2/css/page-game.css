@@ -2,14 +2,14 @@
 .game-page-main {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 78px 16px 44px;
+    padding: 78px 32px 60px;
 }
 
 .game-breadcrumb {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
-    width: 100%;
+    width: 84%;
     max-width: 1000px;
     margin: 0 0 1.5% 0;
     color: #f3f3f3;
@@ -26,7 +26,7 @@
 /* Reproductor principal */
 .player-panel {
     width: 100%;
-    margin: 0;
+    margin: 0 0 62px;
     overflow: hidden;
     border-radius: 6px;
     background: #17191d;
@@ -150,7 +150,8 @@
 /* Descripción e instrucciones */
 .game-content {
     display: grid;
-    gap: 28px;
+    grid-template-columns: minmax(0, 2fr) minmax(250px, 1fr);
+    gap: 5.5%;
 }
 
 .game-main-info {
@@ -159,6 +160,11 @@
 
 .comments-section {
     width: 158.7%;
+}
+
+.comment-form,
+.comment-list {
+    width: 63%;
 }
 
 .about-section h1,
@@ -185,7 +191,7 @@
 .about-image {
     display: block;
     width: 100%;
-    max-height: 320px;
+    max-height: 350px;
     object-fit: cover;
 }
 
@@ -387,7 +393,7 @@
 .game-sidebar {
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 20px;
 }
 
 .video-preview {
@@ -444,7 +450,8 @@
     display: flex;
     flex-direction: column;
     gap: 13px;
-    padding: 22px 20px;
+    padding: 24px 20px;
+    margin-top: 0;
     border-top: 4px solid #0477a8;
     border-radius: 24px;
     background: #55595b;
@@ -470,53 +477,4 @@
 
 .game-page #site-footer {
     margin-top: 0;
-}
-
-/* Ajustes responsive */
-@media (max-width: 759px) {
-    .game-page-main {
-        padding-top: 133px;
-    }
-
-    .comments-section {
-        width: 100%;
-    }
-}
-
-@media (min-width: 760px) {
-    .game-page-main {
-        padding: 78px 32px 60px;
-    }
-
-    .player-panel {
-        width: 100%;
-        margin-bottom: 62px;
-    }
-
-    .game-breadcrumb {
-        width: 84%;
-    }
-
-    .game-content {
-        grid-template-columns: minmax(0, 2fr) minmax(250px, 1fr);
-        gap: 5.5%;
-    }
-
-    .comment-form,
-    .comment-list {
-        width: 63%;
-    }
-
-    .about-image {
-        max-height: 350px;
-    }
-
-    .game-sidebar {
-        gap: 20px;
-    }
-
-    .info-card {
-        margin-top: 0;
-        padding: 24px 20px;
-    }
 }

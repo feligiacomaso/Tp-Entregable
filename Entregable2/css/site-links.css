@@ -1,0 +1,17 @@
+.footer-links a,
+.site-link {
+    color: #fff;
+
+    text-decoration: underline;
+    text-decoration-color: #8a38f5;
+    text-underline-offset: 4px;
+    letter-spacing: .35px;
+    transition: text-decoration-color .2s;
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible,
+.site-link:hover,
+.site-link:focus-visible {
+    text-decoration-color: #f7c544;
+}

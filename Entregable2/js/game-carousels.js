@@ -8,47 +8,76 @@ function setupCarousel(section, games) {
     pagination.className = "carousel-pagination";
     pagination.setAttribute("aria-label", "Páginas del carrusel");
     section.querySelector(".carousel").after(pagination);
-    let page = 0;
+    let cardIndex = 0;
     let pages = 1;
-    let scrollTimer;
+
+    const getVisibleCards = () => {
+        const firstCard = track.querySelector(".card");
+        if (!firstCard) return 1;
+
+        const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+        const cardStep = firstCard.getBoundingClientRect().width + gap;
+        return Math.max(1, Math.round((track.clientWidth + gap) / cardStep));
+    };
+
+    const getLastCardIndex = () => Math.max(0, games.length - getVisibleCards());
+
+    const getCurrentPage = () => {
+        const lastCardIndex = getLastCardIndex();
+        return lastCardIndex === 0
+            ? 0
+            : Math.round(cardIndex / lastCardIndex * (pages - 1));
+    };
+
+    const moveTrack = () => {
+        const firstCard = track.querySelector(".card");
+        if (!firstCard) return;
+
+        const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+        const offset = (firstCard.getBoundingClientRect().width + gap) * cardIndex;
+        track.style.transform = `translateX(-${offset}px)`;
+    };
 
     const renderPagination = () => {
-        pages = Math.max(1, Math.ceil(track.scrollWidth / track.clientWidth));
-        page = Math.min(page, pages - 1);
+        const visibleCards = getVisibleCards();
+        pages = Math.max(1, Math.ceil(games.length / visibleCards));
+        cardIndex = Math.min(cardIndex, getLastCardIndex());
+        moveTrack();
         pagination.replaceChildren(...Array.from({ length: pages }, (_, index) => {
             const dot = document.createElement("button");
             dot.type = "button";
-            dot.className = `pagination-dot${index === page ? " is-active" : ""}`;
+            dot.className = `pagination-dot${index === getCurrentPage() ? " is-active" : ""}`;
             dot.setAttribute("aria-label", `Página ${index + 1} de ${pages}`);
-            dot.setAttribute("aria-current", index === page ? "true" : "false");
-            dot.addEventListener("click", () => goTo(index));
+            dot.setAttribute("aria-current", index === getCurrentPage() ? "true" : "false");
+            dot.addEventListener("click", () => goToPage(index));
             return dot;
         }));
+        updatePagination();
     };
-    const goTo = index => {
-        page = (index + pages) % pages;
-        track.scrollTo({ left: (track.scrollWidth - track.clientWidth) * page / Math.max(1, pages - 1), behavior: "smooth" });
+    const goToCard = index => {
+        const lastCardIndex = getLastCardIndex();
+        cardIndex = Math.min(Math.max(index, 0), lastCardIndex);
+        moveTrack();
+        updatePagination();
+    };
+
+    const goToPage = index => {
+        cardIndex = Math.round(getLastCardIndex() * index / Math.max(1, pages - 1));
+        moveTrack();
         updatePagination();
     };
     const updatePagination = () => {
+        const currentPage = getCurrentPage();
+        previous.disabled = cardIndex === 0;
+        next.disabled = cardIndex === getLastCardIndex();
         pagination.querySelectorAll(".pagination-dot").forEach((dot, index) => {
-            const active = index === page;
+            const active = index === currentPage;
             dot.classList.toggle("is-active", active);
             dot.setAttribute("aria-current", active ? "true" : "false");
         });
     };
-    const syncPage = () => {
-        const max = track.scrollWidth - track.clientWidth;
-        if (max > 0) page = Math.round(track.scrollLeft / max * (pages - 1));
-        updatePagination();
-    };
-
-    next.addEventListener("click", () => goTo(page + 1));
-    previous.addEventListener("click", () => goTo(page - 1));
-    track.addEventListener("scroll", () => {
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(syncPage, 120);
-    }, { passive: true });
+    next.addEventListener("click", () => goToCard(cardIndex + 1));
+    previous.addEventListener("click", () => goToCard(cardIndex - 1));
     new ResizeObserver(renderPagination).observe(track);
     renderPagination();
 }

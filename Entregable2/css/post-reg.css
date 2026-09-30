@@ -20,22 +20,23 @@ textarea {
 }
 
 .c1 {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    display: grid;
+    grid-template-columns: 1.5fr 2.5fr 1fr;
+    align-items: center;
+    gap: 20px;
     min-height: 100vh;
-    padding: 0 16px 24px;
+    padding: 0 24px;
 }
 
 .logo-c {
     display: flex;
-    justify-content: center;
-    padding: 20px 0 8px;
+    align-self: start;
+    padding-top: 32px;
 }
 
 #logo {
     display: block;
-    width: 130px;
+    width: 150px;
 }
 
 #logo img {
@@ -46,32 +47,32 @@ textarea {
 
 .c2 {
     display: flex;
-    flex: 1;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
 }
 
 .c1 > .c2:last-child {
-    display: none;
+    display: flex;
 }
 
 .tarjeta {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: min(100%, 480px);
-    padding: 24px 20px;
+    width: 65%;
+    height: fit-content;
+    padding: 30px;
     border: 2px solid #8a38f5;
     border-radius: 8px;
-    margin: 0 auto;
     background: #17191d;
     color: #fff;
     text-align: center;
 }
 
 .t1 {
-    margin: 0 0 18px;
-    font-size: clamp(28px, 8vw, 35px);
+    margin: 30px 0 20px 0;
+    font-size: 35px;
     font-weight: 700;
 }
 
@@ -107,11 +108,11 @@ a {
 }
 
 .amarillo {
-    width: 100%;
+    width: fit-content;
     padding: 14px;
     border: 0;
     border-radius: 8px;
-    margin: 0 0 10px;
+    margin: 0 0 30px 0;
     background: #f7c544;
     color: #121212;
     font-size: 15px;
@@ -122,35 +123,4 @@ a {
 
 .amarillo:hover {
     background: #fce8ad;
-}
-
-@media (min-width: 760px) {
-    .c1 {
-        display: grid;
-        grid-template-columns: minmax(180px, 1fr) minmax(320px, 480px) minmax(180px, 1fr);
-        align-items: center;
-        gap: 20px;
-        padding: 0 24px;
-    }
-
-    .logo-c {
-        align-self: start;
-        padding-top: 32px;
-    }
-
-    #logo {
-        width: 150px;
-    }
-
-    .c2 {
-        min-height: 100vh;
-    }
-
-    .c1 > .c2:last-child {
-        display: flex;
-    }
-
-    .tarjeta {
-        padding: 30px;
-    }
 }

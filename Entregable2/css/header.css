@@ -57,10 +57,9 @@
 }
 
 .brand {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    position: static;
+    margin-left: 10px;
+    transform: none;
 }
 
 .logo {
@@ -70,13 +69,14 @@
 }
 
 .barra-busqueda {
-    display: none;
+    display: flex;
     align-items: center;
     width: 300px;
     height: 45px;
     padding: 0 8px;
     border: 2px solid #f7c544;
     border-radius: 20px;
+    margin: 0 18px 0 auto;
     background: #181b1d;
 }
 
@@ -135,7 +135,7 @@
     justify-content: center;
     width: 32px;
     height: 32px;
-    margin-left: auto;
+    margin-left: 0;
     padding: 0;
     border: 0;
     background: transparent;
@@ -148,19 +148,28 @@
 }
 
 @media(max-width:699px) {
-    .header-frame,.site-header {
+    .home-page .header-frame {
         height: 121px;
     }
 
-    .site-header {
+    .home-page > main {
+        margin-top: 121px;
+    }
+
+    body:target .site-header {
+        height: 121px;
         padding: 8px 16px 66px;
     }
 
-    .brand {
+    body:target .brand {
+        position: absolute;
+        left: 50%;
         top: 25px;
+        margin: 0;
+        transform: translate(-50%, -50%);
     }
 
-    .barra-busqueda {
+    body:target .barra-busqueda {
         position: absolute;
         right: 16px;
         bottom: 8px;
@@ -171,31 +180,4 @@
         margin: 0;
     }
 
-    body>main {
-        margin-top: 121px;
-    }
-
 }
-
-@media(min-width:700px) {
-    .site-header {
-        padding: 0 2% 0 1%;
-    }
-
-    .brand {
-        position: static;
-        margin-left: 10px;
-        transform: none;
-    }
-
-    .barra-busqueda {
-        display: flex;
-        margin: 0 18px 0 auto;
-    }
-
-    .profile {
-        margin-left: 0;
-    }
-
-}
-
