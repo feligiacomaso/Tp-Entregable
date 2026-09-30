@@ -3,6 +3,11 @@ import { setupBannerCarousel } from "./banner-carousel.js";
 import { setupGameCarousels } from "./game-carousels.js";
 import { loadFooter } from "./footer.js";
 
+const loadingOverlay = document.querySelector("#home-loading");
+const loadingPercentage = document.querySelector("#home-loading-percentage");
+const loadingProgress = document.querySelector(".home-loading__spinner");
+const loadingStartedAt = performance.now();
+
 function showMessage(message) {
     document.querySelectorAll(".track").forEach(track => {
         const notice = document.createElement("p");
@@ -10,6 +15,20 @@ function showMessage(message) {
         notice.textContent = message;
         track.replaceChildren(notice);
     });
+}
+
+function updateLoading(now) {
+    const progress = Math.min((now - loadingStartedAt) / 5000, 1);
+    const percentage = Math.floor(progress * 100);
+    loadingPercentage.textContent = `${percentage}%`;
+    loadingProgress.setAttribute("aria-valuenow", percentage);
+
+    if (progress < 1) {
+        requestAnimationFrame(updateLoading);
+    } else {
+        loadingOverlay.classList.add("is-hidden");
+        setTimeout(() => loadingOverlay.remove(), 300);
+    }
 }
 
 const pegSolitaire = {
@@ -21,7 +40,7 @@ const pegSolitaire = {
     rating: 5
 };
 
-showMessage("Cargando juegos...");
+requestAnimationFrame(updateLoading);
 loadFooter();
 loadGames().then(({ byRating, byDate }) => {
     setupBannerCarousel([pegSolitaire, ...byRating]);

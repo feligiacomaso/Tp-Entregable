@@ -64,12 +64,16 @@
 .launch-game {
     position: relative;
     z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     min-width: 126px;
     padding: 12px 28px;
     border: 0;
     border-radius: 28px;
     background: #8a38f5;
-    color: #fff;
+    color: #111;
     font-size: 16px;
     font-weight: 800;
     text-transform: uppercase;
@@ -77,8 +81,110 @@
     transition: opacity .3s ease,transform .2s ease,visibility 0s;
 }
 
+.launch-game img {
+    flex: none;
+    width: 19px;
+    height: 19px;
+}
+
 .launch-game:hover {
     transform: scale(1.06);
+}
+
+.launch-game[hidden] {
+    display: none;
+}
+
+.paid-game-actions {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: min(100%, 260px);
+}
+
+.paid-game-actions[hidden] {
+    display: none;
+}
+
+.paid-game-action {
+    display: flex;
+    flex: 1 1 126px;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-width: 0;
+    height: 42px;
+    min-height: 42px;
+    padding: 12px 8px;
+    border: 0;
+    border-radius: 28px;
+    background: #f7c544;
+    color: #111;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background .2s ease, transform .2s ease;
+}
+
+.paid-game-action:hover {
+    transform: translateY(-2px);
+    background: #ffd751;
+}
+
+.paid-game-action:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+.paid-game-action img {
+    flex: none;
+    width: 19px;
+    height: 19px;
+    filter: brightness(0) saturate(100%);
+}
+
+.wishlist-plus {
+    font-size: 1.2em;
+    line-height: 1;
+}
+
+.return-game {
+    position: absolute;
+    z-index: 2;
+    right: clamp(12px, 3vw, 28px);
+    bottom: clamp(12px, 3vw, 28px);
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 24px;
+    background: #8a38f5;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity .3s ease, background .2s ease, transform .2s ease, visibility 0s linear .3s;
+}
+
+.return-game:hover {
+    transform: translateY(-2px);
+    background: #9c53ff;
+}
+
+.return-game:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 3px;
+}
+
+.game-player.is-playing .return-game {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity .3s ease, background .2s ease, transform .2s ease;
 }
 
 .game-player.is-playing::after {
@@ -191,8 +297,83 @@
 .about-image {
     display: block;
     width: 100%;
+    height: 100%;
     max-height: 350px;
     object-fit: cover;
+    pointer-events: none;
+    user-select: none;
+}
+
+.about-gallery {
+    position: relative;
+    width: 100%;
+    max-height: 350px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    perspective: 900px;
+    background: #17191d;
+}
+
+.about-gallery-card {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.about-gallery-card[hidden] {
+    display: none;
+}
+
+.about-gallery.is-stacked .about-gallery-card {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: 5px;
+    background: #20232a;
+    box-shadow: 0 15px 30px #0009;
+    cursor: pointer;
+    transition: transform .72s cubic-bezier(.2, .9, .25, 1.18), filter .55s ease, opacity .45s ease, box-shadow .3s ease;
+    transform-origin: center;
+}
+
+.about-gallery-card.is-front {
+    z-index: 2;
+    opacity: 1;
+    filter: brightness(1);
+    transform: translate3d(-12px, 12px, 0) rotate(-1deg) scale(.92);
+}
+
+.about-gallery-card.is-back {
+    z-index: 1;
+    border: 3px solid #8a38f5;
+    opacity: 1;
+    filter: brightness(.86);
+    box-shadow: 0 0 18px #8a38f5aa, 0 15px 30px #0009;
+    transform: translate3d(18px, -10px, -18px) rotate(4deg) scale(.96);
+}
+
+.about-gallery-card.is-front:hover {
+    box-shadow: 0 20px 36px #000b;
+}
+
+.about-gallery-card:focus-visible {
+    z-index: 3;
+    outline: 2px solid #f7c544;
+    outline-offset: -3px;
+    opacity: 1;
+    filter: brightness(1);
+    transform: translate3d(0, 0, 10px) scale(1.005);
+}
+
+.about-gallery.is-stacked .about-gallery-card img {
+    height: 100%;
+    max-height: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about-gallery.is-stacked .about-gallery-card {
+        transition-duration: .01ms;
+    }
 }
 
 /* Favoritos y comentarios */

@@ -1,7 +1,5 @@
-.footer-links a,
-.site-link {
+a.site-link {
     color: #fff;
-
     text-decoration: underline;
     text-decoration-color: #8a38f5;
     text-underline-offset: 4px;
@@ -9,9 +7,18 @@
     transition: text-decoration-color .2s;
 }
 
-.footer-links a:hover,
-.footer-links a:focus-visible,
-.site-link:hover,
-.site-link:focus-visible {
+a.site-link:hover,
+a.site-link:focus-visible {
+    color: #fff;
     text-decoration-color: #f7c544;
+}
+a.Variant-site-link {
+    color: #fff;
+    letter-spacing: .35px;
+    transition: text-decoration-color .2s;
+}
+
+a.variant-site-link:hover,
+a.variant-site-link:focus-visible {
+    color: #f7c544;
 }

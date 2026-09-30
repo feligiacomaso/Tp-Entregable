@@ -16,9 +16,21 @@
         <link rel="stylesheet" href="css/game-carousels.css">
         <link rel="stylesheet" href="css/game-details.css">
         <link rel="stylesheet" href="css/footer.css">
+        <link rel="stylesheet" href="css/home-loading.css">
         <script type="module" src="js/main.js"></script>
     </head>
     <body class="home-page">
+        <div class="home-loading" id="home-loading" role="status" aria-label="Cargando Game House">
+            <div class="home-loading__content">
+                <div class="home-loading__spinner" role="progressbar" aria-label="Progreso de carga" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <span class="home-loading__ring" aria-hidden="true"></span>
+                    <span class="home-loading__percentage" id="home-loading-percentage">0%</span>
+                </div>
+                <div class="home-loading__dots" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
         <iframe class="header-frame" src="header.html#home-header" title="Encabezado de Game House"></iframe>
         <main>
             <section class="featured" aria-label="Juegos destacados">

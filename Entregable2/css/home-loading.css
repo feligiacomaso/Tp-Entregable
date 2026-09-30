@@ -1,0 +1,86 @@
+.home-loading {
+    position: fixed;
+    z-index: 10000;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background: #17191d;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .3s ease, visibility .3s ease;
+}
+
+.home-loading.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.home-loading__content {
+    display: grid;
+    justify-items: center;
+    gap: 22px;
+}
+
+.home-loading__spinner {
+    position: relative;
+    display: grid;
+    width: 104px;
+    aspect-ratio: 1;
+    place-items: center;
+}
+
+.home-loading__ring {
+    position: absolute;
+    inset: 0;
+    border: 5px solid #41444a;
+    border-top-color: #f7c544;
+    border-right-color: #f7c544;
+    border-radius: 50%;
+    animation: home-loading-spin .9s linear infinite;
+}
+
+.home-loading__percentage {
+    color: #f7c544;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.home-loading__dots {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    height: 12px;
+}
+
+.home-loading__dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #f7c544;
+    animation: home-loading-bounce .8s ease-in-out infinite alternate;
+}
+
+.home-loading__dots span:nth-child(2) {
+    animation-delay: .15s;
+}
+
+.home-loading__dots span:nth-child(3) {
+    animation-delay: .3s;
+}
+
+.home-loading__dots span:nth-child(4) {
+    animation-delay: .45s;
+}
+
+@keyframes home-loading-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes home-loading-bounce {
+    to {
+        transform: translateY(-7px);
+    }
+}

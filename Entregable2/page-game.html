@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/header-panels.css">
         <link rel="stylesheet" href="css/page-game.css">
-        <link rel="stylesheet" href="css/peg-solitaire.css">
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/site-links.css">
         <script type="module" src="js/page-game.js"></script>
@@ -19,45 +18,32 @@
         <main class="game-page-main">
 
             <nav class="game-breadcrumb" aria-label="Migas de pan">
-                <a href="index.html">Juegos</a><span>›</span><a id="game-category" href="index.html">Categoría</a><span>›</span><span id="breadcrumb-title">Cargando juego...</span>
+                <a class="site-link" href="index.html">Juegos</a><span>›</span><a class="site-link" id="game-category" href="index.html">Categoría</a><span>›</span><span id="breadcrumb-title">Cargando juego...</span>
             </nav>
 
             <section class="player-panel" aria-label="Juego">
                 <div class="game-player" id="game-player">
                     <img class="player-image" id="player-image" alt="">
-                    <section class="peg-game" id="peg-solitaire" aria-label="Solitario de clavijas">
-                        <div class="peg-game-stats">
-                            <div><span>Movimientos</span><strong id="peg-moves">0</strong></div>
-                            <div><span>Fichas restantes</span><strong id="peg-left">32</strong></div>
-                            <div><span>Tiempo</span><strong id="peg-time">00:00</strong></div>
-                        </div>
-                        <div class="peg-play-area">
-                            <aside class="peg-guide" aria-label="Ayuda del minion">
-                                <div class="peg-speech">
-                                    <img class="peg-speech-image" src="img/nube.png" alt="">
-                                    <p id="peg-status" aria-live="polite">Seleccioná una ficha y saltá sobre otra hacia un espacio vacío.</p>
-                                </div>
-                                <img class="peg-guide-minion" src="img/minion.png" alt="Minion que te ayuda durante la partida">
-                            </aside>
-                            <div class="peg-board" id="peg-board" role="grid" aria-label="Tablero de solitario de clavijas"></div>
-                        </div>
-                        <div class="peg-game-controls">
-                            <button id="peg-restart" type="button" hidden>Reiniciar</button>
-                        </div>
-                        <div class="peg-result" id="peg-result" hidden aria-live="assertive">
-                            <div>
-                                <h2 id="peg-result-title"></h2>
-                                <p id="peg-result-message"></p>
-                                <button id="peg-replay" type="button">Volver a jugar</button>
-                            </div>
-                        </div>
-                    </section>
-                    <button class="launch-game" id="launch-game" type="button">Jugar</button>
+                    <button class="launch-game" id="launch-game" type="button" hidden>
+                        <span>Jugar</span>
+                        <img src="img/icon_play.svg" alt="">
+                    </button>
+                    <div class="paid-game-actions" id="paid-game-actions" role="group" aria-label="Opciones de compra" hidden>
+                        <button class="paid-game-action" id="buy-game" type="button">
+                            <span>Comprar</span>
+                            <img src="img/icon_shop.svg" alt="">
+                        </button>
+                        <button class="paid-game-action" id="wishlist-game" type="button">
+                            <span>Wishlist</span>
+                            <span class="wishlist-plus" aria-hidden="true">+</span>
+                        </button>
+                    </div>
+                    <button class="return-game" id="return-game" type="button">Volver</button>
                     <div class="player-message" id="player-message" hidden></div>
                 </div>
                 
                 <div class="player-toolbar">
-                    <a href="#about-game" aria-label="Ir a información del juego">ⓘ</a>
+                    <a class="site-link" href="#about-game" aria-label="Ir a información del juego">ⓘ</a>
                     <button class="favorite-toggle" type="button" aria-label="Agregar a favoritos" aria-pressed="false">☆</button>
                     <button class="fullscreen-toggle" type="button" aria-label="Pantalla completa">⛶</button>
                     <strong id="player-title">Cargando juego...</strong>
@@ -69,7 +55,14 @@
                     <section class="about-section" id="about-game">
                         <h1>Acerca del juego</h1>
                         <p id="game-description">Cargando información...</p>
-                        <img class="about-image" id="about-image" alt="">
+                        <div class="about-gallery" id="about-gallery">
+                            <div class="about-gallery-card" id="about-gallery-card-primary">
+                                <img class="about-image" id="about-image" alt="">
+                            </div>
+                            <div class="about-gallery-card" id="about-gallery-card-secondary" hidden>
+                                <img class="about-image" id="about-image-secondary" alt="">
+                            </div>
+                        </div>
                     </section>
                     <button class="favorite-cta" type="button" aria-pressed="false">Favoritos <span>★</span></button>
                     <section class="comments-section">
