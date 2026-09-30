@@ -24,18 +24,18 @@
             <section class="player-panel" aria-label="Juego">
                 <div class="game-player" id="game-player">
                     <img class="player-image" id="player-image" alt="">
-                    <button class="launch-game" id="launch-game" type="button" hidden>
-                        <span>Jugar</span>
-                        <img src="img/icon_play.svg" alt="">
+                    <button class="game-action-control launch-game" id="launch-game" type="button" hidden>
+                        <span class="game-action-label">Jugar</span>
+                        <img class="game-action-icon" src="img/icon_play.svg" alt="">
                     </button>
                     <div class="paid-game-actions" id="paid-game-actions" role="group" aria-label="Opciones de compra" hidden>
-                        <button class="paid-game-action" id="buy-game" type="button">
-                            <span>Comprar</span>
-                            <img src="img/icon_shop.svg" alt="">
+                        <button class="game-action-control paid-game-action" id="buy-game" type="button">
+                            <span class="game-action-label">Comprar</span>
+                            <img class="game-action-icon" src="img/icon_shop.svg" alt="">
                         </button>
-                        <button class="paid-game-action" id="wishlist-game" type="button">
-                            <span>Wishlist</span>
-                            <span class="wishlist-plus" aria-hidden="true">+</span>
+                        <button class="game-action-control paid-game-action" id="wishlist-game" type="button">
+                            <span class="game-action-label">Wishlist</span>
+                            <span class="game-action-icon wishlist-plus" aria-hidden="true">+</span>
                         </button>
                     </div>
                     <button class="return-game" id="return-game" type="button">Volver</button>

@@ -61,34 +61,63 @@
     transition: filter .35s ease;
 }
 
-.launch-game {
-    position: relative;
-    z-index: 2;
+.game-action-control {
     display: inline-flex;
+    flex: 0 0 146px;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    min-width: 126px;
-    padding: 12px 28px;
+    width: 146px;
+    min-width: 46px;
+    height: 46px;
+    padding: 0 10px;
+    overflow: hidden;
     border: 0;
-    border-radius: 28px;
-    background: #8a38f5;
-    color: #111;
+    border-radius: 999px;
     font-size: 16px;
     font-weight: 800;
-    text-transform: uppercase;
     cursor: pointer;
-    transition: opacity .3s ease,transform .2s ease,visibility 0s;
+    transition: width .5s cubic-bezier(.22, .61, .36, 1), flex-basis .5s cubic-bezier(.22, .61, .36, 1), padding .45s ease, gap .4s ease, border-radius .5s ease, opacity .3s ease, visibility 0s;
 }
 
-.launch-game img {
-    flex: none;
+.game-action-label {
+    flex: 0 0 auto;
+    max-width: 90px;
+    overflow: hidden;
+    opacity: 1;
+    white-space: nowrap;
+    transition: max-width .45s ease, opacity .38s ease;
+}
+
+.game-action-icon {
+    display: block;
+    flex: 0 0 19px;
     width: 19px;
     height: 19px;
+    object-fit: contain;
 }
 
-.launch-game:hover {
-    transform: scale(1.06);
+.game-action-control:hover,
+.game-action-control:focus-visible {
+    flex-basis: 46px;
+    width: 46px;
+    gap: 0;
+    padding-inline: 0;
+    border-radius: 50%;
+}
+
+.game-action-control:hover .game-action-label,
+.game-action-control:focus-visible .game-action-label {
+    max-width: 0;
+    opacity: 0;
+}
+
+.launch-game {
+    position: relative;
+    z-index: 2;
+    background: #8a38f5;
+    color: #111;
+    text-transform: uppercase;
 }
 
 .launch-game[hidden] {
@@ -101,8 +130,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    width: min(100%, 260px);
+    gap: 10px;
+    width: min(100%, 302px);
 }
 
 .paid-game-actions[hidden] {
@@ -110,44 +139,25 @@
 }
 
 .paid-game-action {
-    display: flex;
-    flex: 1 1 126px;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
+    flex: 1 1 146px;
     min-width: 0;
-    height: 42px;
-    min-height: 42px;
-    padding: 12px 8px;
-    border: 0;
-    border-radius: 28px;
     background: #f7c544;
     color: #111;
-    font-size: 16px;
-    font-weight: 800;
-    cursor: pointer;
-    transition: background .2s ease, transform .2s ease;
 }
 
-.paid-game-action:hover {
-    transform: translateY(-2px);
-    background: #ffd751;
-}
-
+.paid-game-action:hover,
 .paid-game-action:focus-visible {
-    outline: 2px solid #fff;
-    outline-offset: 3px;
+    flex: 0 0 46px;
 }
 
-.paid-game-action img {
-    flex: none;
-    width: 19px;
-    height: 19px;
+.paid-game-action .game-action-icon:not(.wishlist-plus) {
     filter: brightness(0) saturate(100%);
 }
 
 .wishlist-plus {
-    font-size: 1.2em;
+    display: grid;
+    place-items: center;
+    font-size: 24px;
     line-height: 1;
 }
 
