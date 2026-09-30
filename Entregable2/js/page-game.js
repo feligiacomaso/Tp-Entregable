@@ -152,9 +152,12 @@ function showGame(game) {
     const isFree = isFreeToPlay(game);
     $("#launch-game").hidden = !isFree;
     $("#paid-game-actions").hidden = isFree;
-    $("#launch-game").addEventListener("click", () => {
+    const revealGame = () => {
         player.classList.add("is-playing");
-    });
+    };
+    $("#launch-game").addEventListener("click", revealGame);
+    $("#buy-game").addEventListener("click", revealGame);
+    $("#wishlist-game").addEventListener("click", revealGame);
     $("#return-game").addEventListener("click", () => {
         player.classList.remove("is-playing");
     });

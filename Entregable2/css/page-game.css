@@ -132,6 +132,9 @@
     justify-content: center;
     gap: 10px;
     width: min(100%, 302px);
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .3s ease, visibility 0s;
 }
 
 .paid-game-actions[hidden] {
@@ -169,8 +172,8 @@
     padding: 10px 20px;
     border: 0;
     border-radius: 24px;
-    background: #8a38f5;
-    color: #fff;
+    background: #f7c544;
+    color: #111;
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
@@ -182,7 +185,7 @@
 
 .return-game:hover {
     transform: translateY(-2px);
-    background: #9c53ff;
+    background: #f7c544;
 }
 
 .return-game:focus-visible {
@@ -211,6 +214,13 @@
     opacity: 0;
     pointer-events: none;
     transition: opacity .3s ease,transform .2s ease,visibility 0s linear .3s;
+}
+
+.game-player.is-playing .paid-game-actions {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s ease, visibility 0s linear .3s;
 }
 
 .player-message {
