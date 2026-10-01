@@ -58,7 +58,6 @@
 
 .info-card {
     display: flex;
-    flex: 1;
     flex-direction: column;
     gap: 13px;
     padding: 24px 20px;
