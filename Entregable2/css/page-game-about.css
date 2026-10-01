@@ -6,8 +6,8 @@
 }
 
 .game-card-info {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 360px;
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 360px !important;
     align-items: start;
     gap: 24px;
     min-width: 0;
