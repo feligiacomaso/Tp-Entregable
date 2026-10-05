@@ -59,9 +59,12 @@
 }
 
 .menu-panel a:hover,
-.menu-panel a:focus-visible {
+.menu-panel a:focus-visible,
+.profile-panel a:hover,
+.profile-panel a:focus-visible {
     background: #25292d;
 }
+
 
 .category-icon {
     width: 32px;
@@ -83,7 +86,7 @@
     width: 280px;
     min-height: 276px;
     padding: 22px 18px;
-    background: #383c3f;
+    background: #17191d;
     color: #fff;
     transform: translateY(-10px);
 }
