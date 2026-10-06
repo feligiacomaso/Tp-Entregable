@@ -1,31 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mi sitio</title>
-  </head>
-  <body>
-    <header>
-      <h1>Bienvenido</h1>
-      <nav>
-        <ul>
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#">Nosotros</a></li>
-          <li><a href="#">Contacto</a></li>
-        </ul>
-      </nav>
-    </header>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11141c">
+  <title>BLOCKA</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="app">
+    <header class="brand" id="brand">BLOCKA</header>
+    <div class="level-label hidden" id="levelLabel"></div>
+    <div class="preview-count hidden" id="previewCount"></div>
 
-    <main>
-      <section>
-        <h2>Contenido principal</h2>
-        <p>Escribe aquí tu contenido.</p>
+    <section class="gallery" id="gallery" aria-label="Selección de imagen">
+      <div class="image-grid" id="imageGrid"></div>
+      <button class="select-button" id="selectImage">Seleccionar imagen</button>
+    </section>
+
+    <section class="preview hidden" id="preview">
+      <canvas id="previewCanvas"></canvas>
+      <div class="preview-overlay hidden" id="previewOverlay">
+        <button class="start-button" id="startButton">Comenzar</button>
+      </div>
+    </section>
+
+    <section class="game hidden" id="game">
+      <div class="board" id="board" role="group" aria-label="Piezas de BLOCKA"></div>
+      <aside class="help-card hidden" id="helpCard">
+        <p class="difficulty-label">ESTÁS EN UN NIVEL DIFÍCIL</p>
+        <h2>¿Necesitás ayuda?</h2>
+        <p id="helpPenalty"></p>
+        <button class="help-action" id="helpAction">Pedir ayuda</button>
+      </aside>
+      <section class="win-screen hidden" id="winScreen">
+        <h1>¡Ganaste!</h1>
+        <canvas id="solvedImage"></canvas>
+        <button class="next-level-button" id="nextLevel">Siguiente nivel</button>
       </section>
-    </main>
+    </section>
 
-    <footer>
-      <p>© 2026 Mi sitio</p>
-    </footer>
-  </body>
+    <div class="timer hidden" id="timer" aria-live="off">00:00</div>
+    <button class="how-button" id="howButton">Cómo jugar</button>
+
+    <section class="loss hidden" id="loss">
+      <div class="loss-card">
+        <h1>Perdiste</h1>
+        <button class="start-button" id="mainMenu">Menú principal</button>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="instructions">
+    <button class="close-button" id="closeInstructions" aria-label="Cerrar">×</button>
+    <h2>Cómo jugar</h2>
+    <p>Girá cada pieza hasta reconstruir la imagen.</p>
+    <p>Clic izquierdo: gira a la izquierda. Clic derecho: gira a la derecha.</p>
+    <p>Tenés seis niveles. En los primeros tres, el cronómetro cuenta el tiempo transcurrido. En los últimos tres, hay un límite de tiempo.</p>
+    <p>La ayuda está disponible en los niveles difíciles (4–6): fija una pieza correcta y resta 5 segundos.</p>
+  </dialog>
+</body>
 </html>
