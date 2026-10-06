@@ -44,8 +44,10 @@
     width: 100%;
 }
 
+/*-50% la referencia es en obj boton, 
+aparece a partir de la mitad del boton*/
 .btn-style906:hover::after {
-    transform: translateY(0);
+    transform: translateY(0%);
 }
 
 .btn-style906.is-favorite {

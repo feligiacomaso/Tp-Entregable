@@ -30,6 +30,7 @@
     place-items: center;
 }
 
+/* gire tiempo de vuelta y cant de vueltas*/
 .home-loading__ring {
     position: absolute;
     inset: 0;
@@ -37,9 +38,10 @@
     border-top-color: #f7c544;
     border-right-color: #f7c544;
     border-radius: 50%;
-    animation: home-loading-spin .9s linear infinite;
+    animation: home-loading-spin 0.9s linear infinite;
 }
 
+/*estilo*/
 .home-loading__percentage {
     color: #f7c544;
     font-size: 22px;
@@ -53,6 +55,7 @@
     height: 12px;
 }
 
+/*animacion bounce*/
 .home-loading__dots span {
     width: 8px;
     height: 8px;
@@ -61,6 +64,7 @@
     animation: home-loading-bounce .8s ease-in-out infinite alternate;
 }
 
+/*delay movimiento diferente*/
 .home-loading__dots span:nth-child(2) {
     animation-delay: .15s;
 }

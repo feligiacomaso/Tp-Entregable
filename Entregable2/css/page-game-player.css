@@ -17,6 +17,7 @@
     background: #090a0d;
 }
 
+/* pantalla "blur" */
 .game-player::after {
     position: absolute;
     z-index: 1;
@@ -33,9 +34,10 @@
     height: 100%;
     object-fit: cover;
     filter: brightness(.62) saturate(.85);
-    transition: filter .35s ease;
+    transition: filter 2s ease;
 }
 
+/* Botones x3*/
 .game-action-control {
     display: inline-flex;
     flex: 0 0 146px;
@@ -52,26 +54,32 @@
     font-size: 16px;
     font-weight: 800;
     cursor: pointer;
-    transition: width .5s cubic-bezier(.22, .61, .36, 1), flex-basis .5s cubic-bezier(.22, .61, .36, 1), padding .45s ease, gap .4s ease, border-radius .5s ease, opacity .3s ease, visibility 0s;
+    transition: width .5s cubic-bezier(.22, .61, .36, 1),/*ancho*/
+    flex-basis .5s cubic-bezier(.22, .61, .36, 1),/*progresivamente el tamaño*/
+    padding .45s ease, gap .4s ease,
+    border-radius .5s ease, opacity .3s ease, visibility 0s;
 }
 
+/*texto boton -> opacidad y ancho*/
 .game-action-label {
     flex: 0 0 auto;
     max-width: 90px;
-    overflow: hidden;
-    opacity: 1;
+    overflow: hidden;/*pasa a ser 0(no se ve)*/
+    opacity: 1;/*pasa a ser 0(no se ve)*/
     white-space: nowrap;
     transition: max-width .45s ease, opacity .38s ease;
-}
+}/*controla de x a 0*/
+
 
 .game-action-icon {
     display: block;
-    flex: 0 0 19px;
+    flex: 0 0 19px;/*no mod tamaño*/
     width: 19px;
     height: 19px;
-    object-fit: contain;
+    object-fit: contain;/* MANTIENE PROPORCIONES */
 }
 
+/*hover modifica la apariencia del boton*/
 .game-action-control:hover,
 .game-action-control:focus-visible {
     flex-basis: 46px;
@@ -81,12 +89,14 @@
     border-radius: 50%;
 }
 
+/* va de xwidth a 0 (of), mismo con op*/
 .game-action-control:hover .game-action-label,
 .game-action-control:focus-visible .game-action-label {
     max-width: 0;
     opacity: 0;
 }
 
+/*boton jugar*/
 .launch-game {
     position: relative;
     z-index: 2;
@@ -99,6 +109,7 @@
     display: none;
 }
 
+/* clase de contenedor de C y W -> div*/
 .paid-game-actions {
     position: relative;
     z-index: 2;
@@ -116,6 +127,7 @@
     display: none;
 }
 
+/*clase botones 2 -> button*/
 .paid-game-action {
     flex: 1 1 146px;
     min-width: 0;
@@ -123,15 +135,21 @@
     color: #111;
 }
 
+/*achica tamaño boton a 46px */
 .paid-game-action:hover,
 .paid-game-action:focus-visible {
     flex: 0 0 46px;
 }
 
+
+/*
+ICONOS DE BOTONES
+*/
 .paid-game-action .game-action-icon:not(.wishlist-plus) {
     filter: brightness(0) saturate(100%);
-}
+}/*icono negro*/
 
+/*clase -> span (logo)*/
 .wishlist-plus {
     display: grid;
     place-items: center;
@@ -139,6 +157,9 @@
     line-height: 1;
 }
 
+
+
+/* BOTON VOLVER */
 .return-game {
     position: absolute;
     z-index: 2;
@@ -175,6 +196,9 @@
     transition: opacity .3s ease, background .2s ease, transform .2s ease;
 }
 
+
+
+/* desaparece blur*/
 .game-player.is-playing::after {
     opacity: 0;
     pointer-events: none;
@@ -191,6 +215,7 @@
     transition: opacity .3s ease,transform .2s ease,visibility 0s linear .3s;
 }
 
+/*DIV desaparece buttons C y W*/
 .game-player.is-playing .paid-game-actions {
     visibility: hidden;
     opacity: 0;
@@ -208,6 +233,7 @@
     text-align: center;
 }
 
+/* TOOLBAR */
 .player-toolbar {
     display: flex;
     align-items: center;

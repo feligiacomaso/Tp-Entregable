@@ -16,6 +16,7 @@
     perspective: 900px;
 }
 
+/* TARJETA EN POS NO PRINCIPAL */
 .hero .card {
     position: absolute;
     top: 10px;
@@ -165,6 +166,8 @@
     box-shadow: 0 0 24px #8a38f588;
 }
 
+
+/*  FLECHAS */
 .arrow {
     cursor: pointer;
     transition: transform .2s,color .2s;
@@ -185,6 +188,7 @@
     transform: translateY(-50%);
 }
 
+/*creacion de la flecha*/
 .hero-arrow::before{
     display:block;
     width:28px;
@@ -201,6 +205,8 @@
     transform:rotate(-45deg)
 }
 
+
+/* Animacion flecha*/
 .hero .hero-arrow:hover {
     transform: translateY(-50%) scale(1.12);
     color: #ffd22c;
