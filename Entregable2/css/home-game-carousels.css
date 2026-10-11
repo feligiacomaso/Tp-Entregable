@@ -25,9 +25,10 @@
     display: flex;
     gap: 8px;
     padding: 2px 2px 7px;
-    transition: transform .65s ease-in-out;
+    transition: transform 1s ease-in-out;
 }
 
+/* FLECHAS */
 .game-section .row-arrow {
     position: absolute;
     top: 50%;
@@ -59,6 +60,7 @@
     transform:rotate(-45deg)
 }
 
+/* animacion */
 .game-section .row-arrow:hover {
     transform: translateY(-50%) scale(1.12);
     background: #252830;
@@ -78,12 +80,14 @@
     right: 0;
 }
 
+/* */
 .carousel-pagination{
     display:flex;
     justify-content:center;
     gap:7px;
     margin-top:7px
 }
+/* animacion "vacio" a actual*/
 .pagination-dot{
     width:9px;
     height:9px;
@@ -103,6 +107,7 @@
     border-color:#f7c544;
     background:#f7c544
 }
+
 
 @media(min-width:601px) {
     .game-section {

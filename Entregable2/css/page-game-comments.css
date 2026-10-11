@@ -75,6 +75,7 @@
     --button-hover-text: #fff;
 }
 
+/* Animacion comentar y reply*/
 .comment-form button,
 .reply-form button {
     position: relative;
@@ -86,6 +87,7 @@
     transition: color .35s ease .16s, border-color .35s ease;
 }
 
+/* Crea elem sobre el boton*/
 .comment-form button::before,
 .reply-form button::before {
     position: absolute;
@@ -116,16 +118,7 @@
     z-index: 1;
 }
 
-.comment-form button:focus-visible:not(:hover) {
-    outline: 2px solid var(--button-hover);
-    outline-offset: 2px;
-}
-
-.reply-form button:focus-visible:not(:hover) {
-    outline: 2px solid var(--button-hover);
-    outline-offset: 2px;
-}
-
+/* con hover y tab*/
 .comment-form button:hover::before,
 .comment-form button:focus-visible::before,
 .reply-form button:hover::before,
@@ -133,16 +126,6 @@
     left: -42%;
     transform: rotate(2deg) scale(1);
     border-radius: 58% 42% 43% 57%;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .comment-form button,
-    .comment-form button::before,
-    .reply-form button,
-    .reply-form button::before {
-        transition-duration: .01ms;
-        transition-delay: 0s;
-    }
 }
 
 .reply-form {

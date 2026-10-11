@@ -177,9 +177,10 @@ form img {
     text-align: center;
 }
 
+/* Animacion de abajo a arriba*/
 .registration-success.is-visible {
     display: block;
-    animation: registration-success .65s ease-out 1 both;
+    animation: registration-success 2s ease-out infinite both;
 }
 
 @keyframes registration-success {

@@ -1,3 +1,5 @@
+
+/*Animacion open-close*/
 .menu-panel,
 .profile-panel {
     position: fixed;
@@ -5,7 +7,7 @@
     z-index: 120;
     visibility: hidden;
     opacity: 0;
-    transition: transform .25s ease, opacity .2s ease, visibility .25s;
+    transition: transform .7s ease, opacity .5s ease, visibility .7s;
 }
 
 .menu-panel {
