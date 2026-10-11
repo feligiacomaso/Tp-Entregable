@@ -22,6 +22,9 @@
     <section class="preview hidden" id="preview">
       <canvas id="previewCanvas"></canvas>
       <div class="preview-overlay hidden" id="previewOverlay">
+        <p class="difficulty-prompt hidden" id="difficultyPrompt">
+          ¡Estás en un nivel difícil, tenés solo 20 segundos!
+        </p>
         <button class="start-button" id="startButton">Comenzar</button>
       </div>
     </section>
@@ -36,17 +39,17 @@
       </aside>
       <section class="win-screen hidden" id="winScreen">
         <h1>¡Ganaste!</h1>
-        <canvas id="solvedImage"></canvas>
         <button class="next-level-button" id="nextLevel">Siguiente nivel</button>
       </section>
     </section>
 
     <div class="timer hidden" id="timer" aria-live="off">00:00</div>
+    <div class="help-time-change hidden" id="helpTimeChange">−5 segundos</div>
     <button class="how-button" id="howButton">Cómo jugar</button>
 
     <section class="loss hidden" id="loss">
       <div class="loss-card">
-        <h1>Perdiste</h1>
+        <h1>¡Te quedaste sin tiempo!</h1>
         <button class="start-button" id="mainMenu">Menú principal</button>
       </div>
     </section>

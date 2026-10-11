@@ -36,7 +36,7 @@ button {
   height: 100vh;
   height: 100dvh;
   place-items: center;
-  overflow-x: hidden;
+  overflow: hidden;
   padding: 65px 24px;
 }
 
@@ -169,19 +169,44 @@ button {
 .preview-count {
   position: fixed;
   z-index: 3;
-  top: 84px;
-  right: 32px;
+  top: 50%;
+  left: 50%;
   display: grid;
-  width: 44px;
-  height: 44px;
+  width: clamp(96px, 18vw, 148px);
+  height: clamp(96px, 18vw, 148px);
   place-items: center;
-  border: 1px solid #ffffff35;
+  border: 2px solid var(--accent);
   border-radius: 50%;
-  background: #171b23d9;
+  background: #11141cdb;
   color: var(--accent);
   font-family: 'DM Mono', monospace;
-  font-size: 18px;
+  font-size: clamp(56px, 11vw, 92px);
+  font-weight: 500;
   font-variant-numeric: tabular-nums;
+  box-shadow: 0 0 0 10px #d3f36b24, 0 14px 50px #000b;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.preview-count.countdown-tick {
+  animation: countdown-pop 850ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes countdown-pop {
+  0% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(0.72);
+  }
+
+  45% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
 .preview-overlay {
@@ -189,6 +214,19 @@ button {
   inset: 0;
   display: grid;
   place-items: center;
+  align-content: center;
+  gap: 16px;
+}
+
+.difficulty-prompt {
+  max-width: min(360px, calc(100vw - 48px));
+  margin: 0;
+  color: var(--foreground);
+  font-size: clamp(15px, 2.4vw, 20px);
+  font-weight: 800;
+  line-height: 1.4;
+  text-align: center;
+  text-shadow: 0 2px 16px #000;
 }
 
 .start-button,
@@ -217,6 +255,12 @@ button {
   gap: 26px;
   width: min(100%, 970px);
   max-height: 100%;
+  min-height: 0;
+}
+
+.game.with-help {
+  grid-template-columns: 1fr;
+  width: min(100%, 970px);
 }
 
 .game:not(.with-help):not(.won) {
@@ -249,7 +293,14 @@ button {
   border-radius: 3px;
   background-color: #222630;
   background-repeat: no-repeat;
-  transition: transform 220ms ease;
+  transition: transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1), filter 600ms ease;
+}
+
+.tile canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
 .tile.fixed {
@@ -259,7 +310,13 @@ button {
 }
 
 .help-card {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  width: 180px;
+  margin: 0;
   padding: 20px;
+  transform: translateY(-50%);
   border: 1px solid var(--line);
   border-radius: 9px;
   background: #1b1f29;
@@ -301,40 +358,53 @@ button {
   transform: none;
 }
 
-.game.won {
+.game.won:not(.with-help) {
   grid-template-columns: 1fr;
 }
 
+.game.won .board {
+  gap: 0;
+  transition: gap 650ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  padding: 6px;
+  border: 1px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.game.won .tile {
+  border-radius: 0;
+}
+
 .win-screen {
-  grid-column: 1 / -1;
-  display: grid;
-  justify-items: center;
-  gap: 14px;
-  width: 100%;
-  animation: win-arrival 600ms ease both;
+  position: fixed;
+  z-index: 4;
+  inset: 0;
+  pointer-events: none;
 }
 
 .win-screen h1 {
+  position: absolute;
+  top: var(--win-title-top, 24px);
+  left: var(--win-center, 50%);
   margin: 0;
   color: var(--accent);
   font-size: clamp(30px, 5vw, 46px);
   letter-spacing: -0.04em;
+  text-align: center;
   text-shadow: 0 0 30px #d3f36b44;
+  transform: translateX(-50%);
+  animation: win-fade 600ms ease both;
 }
-
-.win-screen canvas {
-  display: block;
-  width: auto;
-  height: auto;
-  max-width: calc(100vw - 64px);
-  max-height: calc(100dvh - 260px);
-  border-radius: 8px;
-  box-shadow: 0 18px 65px #0008;
-  animation: solved-reveal 800ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
-}
-
 .next-level-button {
+  position: absolute;
+  bottom: auto;
+  top: var(--win-action-top, auto);
+  left: var(--win-center, 50%);
   min-width: 210px;
+  transform: translateX(-50%);
+  pointer-events: auto;
+  animation: win-fade 600ms ease both;
   padding: 15px 28px;
   border: 0;
   border-radius: 7px;
@@ -347,12 +417,13 @@ button {
 
 .next-level-button:hover {
   background: #e1ff88;
-  transform: translateY(-2px);
+  transform: translate(-50%, -2px);
 }
 
 .timer {
   position: fixed;
-  bottom: 24px;
+  top: var(--win-action-top, auto);
+  bottom: auto;
   left: 50%;
   transform: translateX(-50%);
   color: var(--foreground);
@@ -362,6 +433,27 @@ button {
   font-variant-numeric: tabular-nums;
 }
 
+.help-time-change {
+  position: fixed;
+  z-index: 5;
+  top: 98px;
+  left: 24px;
+  color: #ff6b6b;
+  font-size: 13px;
+  font-weight: 700;
+  animation: penalty-pop 280ms ease-out;
+}
+
+@keyframes penalty-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .timer.in-game {
   top: 73px;
   right: auto;
@@ -494,6 +586,19 @@ dialog p {
   }
 }
 
+@media (max-width: 1000px) {
+  .game.with-help {
+    grid-template-columns: 1fr;
+    width: min(100%, 720px);
+  }
+
+  .game.with-help .help-card {
+    position: static;
+    width: 100%;
+    margin: 0 auto;
+    transform: none;
+  }
+}
 @media (max-width: 760px) {
   .app {
     padding: 65px 16px;
@@ -510,9 +615,19 @@ dialog p {
     max-height: calc(100dvh - 130px);
   }
 
+  .game.with-help {
+    grid-template-columns: 1fr;
+    width: min(100%, 620px);
+  }
+
+  .game.with-help .help-card {
+    position: static;
+    width: 100%;
+    margin: 0 auto;
+    transform: none;
+  }
+
   .help-card {
-    width: min(100%, 420px);
-    margin: auto;
     padding: 14px 16px;
   }
 
@@ -525,18 +640,13 @@ dialog p {
     width: auto;
   }
 
-  .preview-count {
-    top: 76px;
-    right: 16px;
-  }
-
   .brand.in-game,
   .level-label.in-game,
-  .timer.in-game {
+  .timer.in-game,
+  .help-time-change {
     left: 16px;
   }
 }
-
 @media (max-width: 480px) {
   .image-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -588,5 +698,15 @@ dialog p {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+  }
+}
+
+@keyframes win-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
