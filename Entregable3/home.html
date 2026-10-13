@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Game House | Juegos</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/base.css">
+        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/header-panels.css">
+        <link rel="stylesheet" href="css/site-links.css">
+        <link rel="stylesheet" href="css/home-game-card.css">
+        <link rel="stylesheet" href="css/home-banner-carousel.css">
+        <link rel="stylesheet" href="css/home-game-carousels.css">
+        <link rel="stylesheet" href="css/footer.css">
+        <link rel="stylesheet" href="css/home-loading.css">
+        <script type="module" src="js/home-main.js"></script>
+    </head>
+    <body class="home-page">
+        <div class="home-loading" id="home-loading" role="status" aria-label="Cargando Game House">
+            <div class="home-loading__content">
+                <div class="home-loading__spinner" role="progressbar" aria-label="Progreso de carga" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                    <span class="home-loading__ring" aria-hidden="true"></span>
+                    <span class="home-loading__percentage" id="home-loading-percentage">0%</span>
+                </div>
+                <div class="home-loading__dots" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+        <iframe class="header-frame" src="header.html#home-header" title="Encabezado de Game House"></iframe>
+        <main>
+            <section class="featured" aria-label="Juegos destacados">
+                <div class="section-title">
+                    <div>
+                        <p class="featured-title">Juegos destacados</p>
+                    </div>
+                </div>
+                <div class="carousel hero">
+                    <button class="arrow hero-arrow hero-prev" aria-label="Anterior"></button>
+                    <div class="track"></div>
+                    <button class="arrow hero-arrow hero-next" aria-label="Siguiente"></button>
+                </div>
+            </section>
+            <section class="game-section game-section--recommended">
+                <div class="section-title">
+                    <p class="t1">Recomendados para vos</p>
+                </div>
+                <div class="carousel">
+                    <button class="arrow row-arrow row-prev" aria-label="Anterior"></button>
+                    <div class="track"></div>
+                    <button class="arrow row-arrow row-next" aria-label="Siguiente"></button>
+                </div>
+            </section>
+            <section class="game-section">
+                <div class="section-title">
+                    <h2>Porque jugaste al Call of Duty</h2>
+                </div>
+                <div class="carousel">
+                    <button class="arrow row-arrow row-prev" aria-label="Anterior"></button>
+                    <div class="track"></div>
+                    <button class="arrow row-arrow row-next" aria-label="Siguiente"></button>
+                </div>
+            </section>
+            <section class="game-section">
+                <div class="section-title">
+                    <h2>Juegos populares</h2>
+                </div>
+                <div class="carousel">
+                    <button class="arrow row-arrow row-prev" aria-label="Anterior"></button>
+                    <div class="track"></div>
+                    <button class="arrow row-arrow row-next" aria-label="Siguiente"></button>
+                </div>
+            </section>
+        </main>
+        <div id="site-footer"></div>
+    </body>
+</html>

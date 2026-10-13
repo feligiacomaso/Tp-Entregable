@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+:root {
+  color-scheme: dark;
+  --background: #11141c;
+  --foreground: #f4f2eb;
+  --muted: #a8abb3;
+  --accent: #d3f36b;
+  --line: #343946;
+  font-family: 'Manrope', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+button {
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.app {
+  position: relative;
+  display: grid;
+  height: 100vh;
+  height: 100dvh;
+  place-items: center;
+  overflow: hidden;
+  padding: 65px 24px;
+}
+
+.brand {
+  position: fixed;
+  z-index: 3;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
+
+.brand.in-game {
+  top: 20px;
+  left: 24px;
+  transform: none;
+}
+
+.level-label {
+  position: fixed;
+  z-index: 3;
+  top: 52px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+}
+
+.level-label.in-game {
+  top: 48px;
+  left: 24px;
+  transform: none;
+}
+
+.gallery,
+.preview,

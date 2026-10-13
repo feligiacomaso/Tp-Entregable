@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/site-links.css">
+</head>
+<body class="header-page" id="home-header">
+    <header class="site-header">
+        <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="site-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <a class="brand site-link" href="home.html" target="_top" aria-label="Game House, inicio">
+            <img src="src/Logo.svg" alt="Game House" class="logo">
+        </a>
+
+        <label class="barra-busqueda">
+            <input type="search" placeholder="¿Qué querés jugar?" aria-label="Buscar juegos">
+            <button type="button" aria-label="Buscar">
+                <img src="src/icon_buscar.svg" alt="">
+            </button>
+        </label>
+        <button class="profile" type="button" aria-label="Abrir perfil" aria-expanded="false" aria-controls="profile-panel">
+            <img src="src/icon_profile.svg" alt="">
+        </button>
+    </header>
+
+    <!--MENU CON CATEGORIAS-->
+    <template id="menu-panel-template">
+        <aside class="menu-panel" id="site-menu" aria-hidden="true">
+            <nav aria-label="Menú principal">
+                <a class="variant-site-link" href="home.html"><span class="category-icon" aria-hidden="true">⌂</span>Inicio</a>
+                <a class="variant-site-link" href="#"><span class="category-icon" aria-hidden="true">✦</span>Nuevos</a>
+                <a class="variant-site-link" href="#"><span class="category-icon" aria-hidden="true">♛</span>Populares</a>
+                <a class="variant-site-link" href="#"><span class="category-icon" aria-hidden="true">★</span>Favoritos</a>
+                <a class="variant-site-link" href="#"><span class="category-icon" aria-hidden="true">◆</span>Todas las categorías</a>
+                <div class="menu-divider" role="separator"></div>
+                <a class="variant-site-link" href="#"><span class="category-icon" aria-hidden="true">●</span>Acción</a>
+                <a class="variant-site-link" href="#"><span class="category-icon" aria-hidden="true">▣</span>Arcade</a>
+                <a class="variant-site-link" href="#"><span class="category-icon" aria-hidden="true">◉</span>Aventuras</a>
+                <a class="variant-site-link" href="#"><span class="category-icon" aria-hidden="true">♠</span>Solitario</a>
+                <a class="variant-site-link" href="#"><span class="category-icon" aria-hidden="true">▤</span>Cocina</a>
+                <a class="variant-site-link" href="#"><span class="category-icon" aria-hidden="true">⚯</span>Deportes</a>
+                <a class="variant-site-link" href="#"><span class="category-icon" aria-hidden="true">◉</span>Conducir</a>
+                <a class="variant-site-link" href="#"><span class="category-icon" aria-hidden="true">♟</span>Estrategia</a>
+                <a class="variant-site-link" href="#"><span class="category-icon" aria-hidden="true">☷</span>Gestión</a>
+                <a class="variant-site-link" href="#"><span class="category-icon" aria-hidden="true">⌕</span>Objetos ocultos</a>
+                <a class="variant-site-link" href="#"><span class="category-icon" aria-hidden="true">✚</span>Rompecabezas</a>
+            </nav>
+        </aside>
+    </template>
+
+    <!-- POP UP PERFIL -->
+    <template id="profile-panel-template">
+        <aside class="profile-panel" id="profile-panel" aria-hidden="true">
+            <h2>Mi perfil</h2>
+            <nav aria-label="Menú de perfil">
+                <a class="variant-site-link" href="#">Perfil</a>
+                <a class="variant-site-link" href="#">Favoritos</a>
+                <a class="variant-site-link" href="#">Wishlist</a>
+                <a class="variant-site-link" href="#">Configuración</a>
+                <a class="variant-site-link" href="#">Cerrar sesión</a>
+            </nav>
+        </aside>
+    </template>
+
+    <script type="module" src="js/header.js"></script>
+</body>
+</html>

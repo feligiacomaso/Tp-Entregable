@@ -1,0 +1,124 @@
+@media (max-width: 1000px) {
+  .game.with-help {
+    grid-template-columns: 1fr;
+    width: min(100%, 720px);
+  }
+
+  .game.with-help .help-card {
+    position: static;
+    width: 100%;
+    margin: 0 auto;
+    transform: none;
+  }
+}
+@media (max-width: 760px) {
+  .app {
+    padding: 65px 16px;
+  }
+
+  .image-grid {
+    gap: 10px;
+  }
+
+  .game {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    width: min(100%, 620px);
+    max-height: calc(100dvh - 130px);
+  }
+
+  .game.with-help {
+    grid-template-columns: 1fr;
+    width: min(100%, 620px);
+  }
+
+  .game.with-help .help-card {
+    position: static;
+    width: 100%;
+    margin: 0 auto;
+    transform: none;
+  }
+
+  .help-card {
+    padding: 14px 16px;
+  }
+
+  .help-card p {
+    min-height: 0;
+    margin: 6px 0 10px;
+  }
+
+  .help-action {
+    width: auto;
+  }
+
+  .brand.in-game,
+  .level-label.in-game,
+  .timer.in-game,
+  .help-time-change {
+    left: 16px;
+  }
+}
+@media (max-width: 480px) {
+  .image-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .board {
+    gap: 3px;
+    padding: 4px;
+  }
+
+  .how-button {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .timer:not(.in-game) {
+    bottom: 20px;
+    left: 20px;
+    transform: none;
+  }
+}
+
+@media (max-height: 620px) {
+  .app {
+    padding-top: 58px;
+    padding-bottom: 58px;
+  }
+
+  .image-grid {
+    gap: 8px;
+  }
+
+  .select-button {
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .board {
+    max-height: calc(100dvh - 150px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+@keyframes win-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

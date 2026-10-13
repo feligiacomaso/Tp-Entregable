@@ -1,0 +1,153 @@
+.help-time-change {
+  position: fixed;
+  z-index: 5;
+  top: 98px;
+  left: 24px;
+  color: #ff6b6b;
+  font-size: 13px;
+  font-weight: 700;
+  animation: penalty-pop 280ms ease-out;
+}
+
+@keyframes penalty-pop {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.timer.in-game {
+  top: 73px;
+  right: auto;
+  bottom: auto;
+  left: 24px;
+  transform: none;
+}
+
+.how-button {
+  position: fixed;
+  z-index: 6;
+  right: 16px;
+  top:10px;
+  padding: 11px 15px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #1b1f29;
+  color: var(--foreground);
+  font-size: 11px;
+}
+
+.how-button:hover {
+  border-color: var(--accent);
+}
+
+.loss {
+  position: fixed;
+  z-index: 5;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #090b10b8;
+  backdrop-filter: blur(8px);
+}
+
+.loss-card {
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #1b1f29;
+  box-shadow: 0 24px 90px #0009;
+}
+
+.loss-card h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+dialog {
+  position: fixed;
+  width: min(420px, calc(100% - 32px));
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #1b1f29;
+  color: var(--foreground);
+  box-shadow: 0 24px 90px #000b;
+}
+
+dialog::backdrop {
+  background: #090b10c9;
+  backdrop-filter: blur(4px);
+}
+
+dialog h2 {
+  margin: 0 0 18px;
+  font-size: 24px;
+}
+
+dialog p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.close-button {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 24px;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes win-arrival {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes solved-reveal {
+  from {
+    opacity: 0;
+    filter: blur(12px) saturate(0.5);
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    filter: blur(0) saturate(1.2);
+    transform: scale(1);
+  }
+}
+

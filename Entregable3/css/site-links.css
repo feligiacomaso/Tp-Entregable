@@ -1,0 +1,24 @@
+a.site-link {
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: #8a38f5;
+    text-underline-offset: 4px;
+    letter-spacing: .35px;
+    transition: text-decoration-color .2s;
+}
+
+a.site-link:hover,
+a.site-link:focus-visible {
+    color: #fff;
+    text-decoration-color: #f7c544;
+}
+a.variant-site-link {
+    color: #fff;
+    letter-spacing: .35px;
+    transition: text-decoration-color .2s;
+}
+
+a.variant-site-link:hover,
+a.variant-site-link:focus-visible {
+    color: #f7c544;
+}

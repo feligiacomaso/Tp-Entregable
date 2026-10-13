@@ -1,0 +1,126 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Asap', sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+.login {
+    min-height: 100vh;
+    background: #17191d url("../src/fondo.jpeg") center / cover fixed;
+}
+
+.c1 {
+    display: grid;
+    grid-template-columns: 1.5fr 2.5fr 1fr;
+    align-items: center;
+    gap: 20px;
+    min-height: 100vh;
+    padding: 0 24px;
+}
+
+.logo-c {
+    display: flex;
+    align-self: start;
+    padding-top: 32px;
+}
+
+#logo {
+    display: block;
+    width: 150px;
+}
+
+#logo img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.c2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.c1 > .c2:last-child {
+    display: flex;
+}
+
+.tarjeta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 65%;
+    height: fit-content;
+    padding: 30px;
+    border: 2px solid #8a38f5;
+    border-radius: 8px;
+    background: #17191d;
+    color: #fff;
+    text-align: center;
+}
+
+.t1 {
+    margin: 30px 0 20px 0;
+    font-size: 35px;
+    font-weight: 700;
+}
+
+.t2 {
+    margin: 0 0 14px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.body {
+    margin: 0 0 22px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.caption {
+    margin: 8px 0 0;
+    color: #fff;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+a {
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-color: #8a38f5;
+}
+
+.tarjeta form {
+    width: 100%;
+}
+
+.amarillo {
+    width: fit-content;
+    padding: 14px;
+    border: 0;
+    border-radius: 8px;
+    margin: 0 0 30px 0;
+    background: #f7c544;
+    color: #121212;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color .2s ease;
+}
+
+.amarillo:hover {
+    background: #fce8ad;
+}

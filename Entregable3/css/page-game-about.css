@@ -1,0 +1,156 @@
+/* Descripción e instrucciones */
+.game-content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.game-card-info {
+    display: grid ;
+    grid-template-columns: minmax(0, 1fr) 360px ;
+    align-items: start;
+    gap: 24px;
+    min-width: 0;
+}
+
+.about-section {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.how-to-play {
+    margin-top: 18px;
+    margin-bottom: 18px;
+    font-size: 15px;
+}
+
+.about-section > .favorite-cta {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+.how-to-play h2,
+.how-to-play h3 {
+    margin: 0 0 8px;
+    font-size: 16px;
+}
+
+.how-to-play p,
+.how-to-play li {
+    color: #e0e0e0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.how-to-play p {
+    margin: 0 0 12px;
+}
+
+.how-to-play ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.how-to-play li + li {
+    margin-top: 6px;
+}
+
+@media (max-width: 700px) {
+    .game-card-info {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .about-section > .favorite-cta { 
+        margin-top: 20px; 
+    }
+}
+
+.about-section h1,
+.comments-section h2,
+.video-section h2 {
+    margin: 0 0 7px;
+    font-size: 18px;
+}
+
+.about-section h1,
+.comments-section h2 {
+    width: 100%;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #0477a8;
+}
+
+.about-section p {
+    margin: 0 0 12px;
+    color: #e0e0e0;
+    font-size: 15px;
+    line-height: 1.45;
+}
+
+.about-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    pointer-events: none;
+    user-select: none;
+}
+
+.about-gallery {
+    position: relative;
+    width: 100%;
+    max-height: 350px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    perspective: 900px;
+    background: #17191d;
+}
+
+.about-gallery-card {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.about-gallery-card[hidden] {
+    display: none;
+}
+
+
+/* Animacion galeria*/
+.about-gallery.is-stacked .about-gallery-card {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: 5px;
+    background: #20232a;
+    box-shadow: 0 15px 30px #0009;
+    cursor: pointer;
+    transition: transform .72s cubic-bezier(.2, .12, .25, .18), filter .55s ease-out, opacity .45s ease, box-shadow .3s ease;
+    transform-origin: center;
+}
+
+
+/* girar tarjeta para poder ver la de atras */
+.about-gallery-card.is-front {
+    z-index: 2;
+    opacity: 1;
+    filter: brightness(1);
+    transform: translate3d(-12px, 12px, 0) rotate(-1deg) scale(.92);
+}
+
+.about-gallery-card.is-back {
+    z-index: 1;
+    border: 3px solid #8a38f5;
+    opacity: 1;
+    filter: brightness(.50);
+    box-shadow: 0 0 18px #8a38f5aa, 0 15px 30px #0009;
+    transform: translate3d(18px, -10px, -18px) rotate(4deg) scale(.96);
+}
+/*pos tarj*/
+
+.about-gallery.is-stacked .about-gallery-card img {
+    height: 100%;
+    max-height: none;
+}

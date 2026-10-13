@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Juego | Game House</title>
+        <link rel="stylesheet" href="css/base.css">
+        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/header-panels.css">
+        <link rel="stylesheet" href="css/page-game.css">
+        <link rel="stylesheet" href="css/page-game-player.css">
+        <link rel="stylesheet" href="css/page-game-about.css">
+        <link rel="stylesheet" href="css/page-game-comments.css">
+        <link rel="stylesheet" href="css/page-game-sidebar.css">
+        <link rel="stylesheet" href="css/page-game-favorites.css">
+        <link rel="stylesheet" href="css/footer.css">
+        <link rel="stylesheet" href="css/site-links.css">
+        <script type="module" src="js/page-game.js"></script>
+    </head>
+    <body class="game-page">
+        <iframe class="header-frame" src="header.html" title="Encabezado de Game House"></iframe>
+
+        <main class="game-page-main">
+
+            <nav class="game-breadcrumb" aria-label="Migas de pan">
+                <a class="site-link" href="home.html">Juegos</a><span>›</span><a class="site-link" id="game-category" href="home.html">Categoría</a><span>›</span><span id="breadcrumb-title">Cargando juego...</span>
+            </nav>
+
+            <section class="player-panel" aria-label="Juego">
+                <div class="game-player" id="game-player">
+                    <img class="player-image" id="player-image" alt="">
+                    <iframe
+                        class="game-frame"
+                        id="game-frame"
+                        title="Blocka"
+                        src=""
+                        hidden>
+                    </iframe>
+                    <button class="game-action-control launch-game" id="launch-game" type="button" hidden>
+                        <span class="game-action-label">Jugar</span>
+                        <img class="game-action-icon" src="src/icon_play.svg" alt="">
+                    </button>
+                    <div class="paid-game-actions" id="paid-game-actions" role="group" aria-label="Opciones de compra" hidden>
+                        <button class="game-action-control paid-game-action" id="buy-game" type="button">
+                            <span class="game-action-label">Comprar</span>
+                            <img class="game-action-icon" src="src/icon_shop.svg" alt="">
+                        </button>
+                        <button class="game-action-control paid-game-action" id="wishlist-game" type="button">
+                            <span class="game-action-label">Wishlist</span>
+                            <span class="game-action-icon wishlist-plus" aria-hidden="true">+</span>
+                        </button>
+                    </div>
+                    <button class="return-game" id="return-game" type="button">Volver</button>
+                    <div class="player-message" id="player-message" hidden></div>
+                </div>
+                
+                <div class="player-toolbar">
+                    <a class="variant-site-link" href="#about-game" aria-label="Ir a información del juego">ⓘ</a>
+                    <button class="favorite-toggle" type="button" aria-label="Agregar a favoritos" aria-pressed="false">☆</button>
+                    <button class="fullscreen-toggle" type="button" aria-label="Pantalla completa">⛶</button>
+                    <strong id="player-title">Cargando juego...</strong>
+                </div>
+            </section>
+
+            <div class="game-content">
+                <div class="game-card-info">
+                    <section class="about-section" id="about-game">
+                        <h1>Acerca del juego</h1>
+                        <p id="game-description">Cargando información...</p>
+                        <div class="about-gallery" id="about-gallery">
+                            <div class="about-gallery-card" id="about-gallery-card-primary">
+                                <img class="about-image" id="about-image" alt="">
+                            </div>
+                            <div class="about-gallery-card" id="about-gallery-card-secondary" hidden>
+                                <img class="about-image" id="about-image-secondary" alt="">
+                            </div>
+                        </div>
+                        <div class="how-to-play how-to-play--peg" data-game-instructions="minion-peg-solitarie">
+                            <h2>Cómo jugar</h2>
+                            <p>El objetivo del Solitario de clavijas (o Senku) es eliminar las fichas mediante saltos hasta que solo quede una ficha en el centro del tablero.</p>
+                            <h3>Reglas básicas</h3>
+                            <ul>
+                                <li>Posición inicial: Llena todo el tablero con fichas y deja vacío únicamente el agujero del centro.</li>
+                                <li>Movimiento válido: Toma una ficha y hazla saltar de manera horizontal o vertical sobre una ficha adyacente que tenga un espacio libre justo detrás. No se permiten los saltos en diagonal.</li>
+                                <li>Eliminación: La ficha que fue saltada se retira del tablero.</li>
+                                <li>Fin del juego: Termina cuando ya no puedes hacer más saltos. Ganas si logras dejar una sola pieza.</li>
+                            </ul>
+                        </div>
+                        <div class="how-to-play how-to-play--blocka" data-game-instructions="blocka" hidden>
+                            <h2>Cómo jugar</h2>
+                            <p>Reconstruí la imagen girando las piezas hasta que todas queden en la posición correcta.</p>
+                            <h3>Controles</h3>
+                            <ul>
+                                <li>Clic izquierdo: gira una pieza hacia la izquierda.</li>
+                                <li>Clic derecho: gira una pieza hacia la derecha.</li>
+                                <li>Objetivo: completá los seis niveles.</li>
+                            </ul>
+                        </div>
+                        <button class="btn-style906 favorite-cta is-favorite" type="button" data-hover="Agregar +" data-hover-click="Agregado!" aria-pressed="true">
+                            Favoritos ★
+                        </button>
+                    </section>
+                    <aside class="game-sidebar" aria-label="Video e información del juego">
+                    <section class="video-section">
+                        <button class="video-preview" id="video-preview" type="button" aria-label="Reproducir video del juego">
+                            <img id="video-image" alt="">
+                            <span class="video-play" aria-hidden="true">▶</span>
+                        </button>
+                        <p class="video-message" id="video-message" hidden></p>
+                        <h2>Video del juego</h2>
+                    </section>
+                    <section class="info-card">
+                        <h2>Información del juego</h2>
+                        <div><h3>Desarrollador</h3><p id="game-developer">Game House</p></div>
+                        <div><h3>Publicación</h3><p id="game-release">No informada</p></div>
+                        <div><h3>Última actualización</h3><p id="game-updated">No informada</p></div>
+                        <div><h3>Plataforma</h3><p id="game-platforms">Juega desde tu navegador web</p></div>
+                    </section>
+                    </aside>
+                </div>
+                <section class="comments-section">
+                    <h2>Comentarios</h2>
+                    <form class="comment-form">
+                        <span class="comment-avatar current-user" aria-hidden="true"><img src="src/icon_profile.svg" alt=""></span>
+                        <input name="comment" placeholder="Agrega un comentario..." aria-label="Agrega un comentario" required maxlength="500">
+                        <button type="submit" aria-label="Publicar comentario"><span>Comentar</span></button>
+                    </form>
+                    <div class="comment-list" id="comment-list" aria-live="polite"></div>
+                </section>
+            </div>
+        </main>
+        <div id="site-footer"></div>
+    </body>
+</html>
