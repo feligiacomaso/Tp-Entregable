@@ -7,5 +7,8 @@ export const sceneSources = [
   'src/imagen-6.png',
 ];
 
-export const filters = ['grayscale', 'brightness', 'negative', 'grayscale', 'brightness', 'negative'];
+//export const filters = ['grayscale', 'brightness', 'negative', 'grayscale', 'brightness', 'negative'];
+
+export const filters = ['grayscale', 'brightness', 'negative', 'blur'];
+
 export const timeLimits = [0, 0, 0, 20, 20, 20];

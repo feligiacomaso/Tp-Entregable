@@ -2,7 +2,8 @@
 import {
   filterGrayscale,
   filterNegative,
-  filterBrightness30
+  filterBrightness30,
+  filterBlur
 } from './filters.js';
 
 export function createBoardController({
@@ -60,6 +61,8 @@ export function createBoardController({
     fit();
     board.innerHTML = '';
     pieces = [];
+    const filterName = filters[Math.floor(Math.random() * 4)];
+      
 
     for (let index = 0; index < count; index += 1) {
       const tile = document.createElement('button');
@@ -82,19 +85,15 @@ export function createBoardController({
         pieceImage.height,
       );
 
+      //Guarda OG
       const originalImage = document.createElement('canvas');
       originalImage.width = pieceImage.width;
       originalImage.height = pieceImage.height;
       originalImage.getContext('2d').drawImage(pieceImage, 0, 0);
 
       const pieceContext = pieceImage.getContext('2d');
-      const sourcePixels = pieceContext.getImageData(
-        0,
-        0,
-        pieceImage.width,
-        pieceImage.height
-      );
-      const filterName = filters[getLevel() - 1];
+      const sourcePixels = pieceContext.getImageData(0, 0, pieceImage.width, pieceImage.height );
+      //const filterName = filters[Math.floor(Math.random() * 4)];
       let filteredPixels = sourcePixels;
 
       if (filterName === 'grayscale') {
@@ -103,8 +102,11 @@ export function createBoardController({
         filteredPixels = filterBrightness30(pieceContext, sourcePixels);
       } else if (filterName === 'negative') {
         filteredPixels = filterNegative(pieceContext, sourcePixels);
+      }  else if (filterName === 'blur') {
+        filteredPixels = filterBlur(pieceContext, sourcePixels);
       }
 
+      // px ya mod al canvas
       pieceContext.putImageData(filteredPixels, 0, 0);
 
       tile.className = 'tile';

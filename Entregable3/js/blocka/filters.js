@@ -82,9 +82,9 @@ export function filterBrightness30(context, imageData) {
 
     for (let y = 0; y < imageData.height; y++) {
         for (let x = 0; x < imageData.width; x++) {
-            const red = getRed(imageData, x, y) * 1.3;
-            const green = getGreen(imageData, x, y) * 1.3;
-            const blue = getBlue(imageData, x, y) * 1.3;
+            const red = getRed(imageData, x, y) * 5;
+            const green = getGreen(imageData, x, y) * 5;
+            const blue = getBlue(imageData, x, y) * 5;
 
             const alpha = imageData.data[getIndex(imageData, x, y) + 3];
 
@@ -93,4 +93,42 @@ export function filterBrightness30(context, imageData) {
     }
 
     return output;
+}
+
+export function filterBlur(context, imageData) {
+    const V = 10;
+    const width = imageData.width;
+    const height = imageData.height;
+    const src = imageData.data;
+    const destino = context.createImageData(width, height);
+    const dst = destino.data;
+
+    for (let y = 0; y < height; y++) {
+        for (let x = 0; x < width; x++) {
+            let r = 0, g = 0, b = 0, n = 0;
+
+            for (let dy = -V; dy <= V; dy++) {
+                for (let dx = -V; dx <= V; dx++) {
+                    const nx = x + dx;
+                    const ny = y + dy;
+
+                    if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
+
+                    const j = (nx + ny * width) * 4;
+                    r += src[j];
+                    g += src[j + 1];
+                    b += src[j + 2];
+                    n++;
+                }
+            }
+
+            const i = (x + y * width) * 4;
+            dst[i] = r / n;
+            dst[i + 1] = g / n;
+            dst[i + 2] = b / n;
+            dst[i + 3] = src[i + 3];
+        }
+    }
+
+    return destino;
 }
